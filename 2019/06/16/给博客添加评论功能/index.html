@@ -13,16 +13,16 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="John Doe">
+    <meta name="author" content>
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="John Doe">
+    <meta name="copyright" content>
     
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Hello World · Eliasliangyu</title>
+    <title>给博客添加评论功能 · Eliasliangyu&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">Eliasliangyu&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">给博客添加评论功能</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            给博客添加评论功能
             <!-- 404 -->
             
         </h1>
@@ -264,14 +264,20 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Course">Course</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">463</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/06/11</span>
+                    <span class="post-intro-time">2019/06/16</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,7 +401,44 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to my blog.</p>
+        <h1 class="title clock">给博客添加评论功能</h1>
+<p>Hexo的评论系统有很多，常见的有以下几个：</p>
+<ul>
+<li>多说：（凉了）</li>
+<li>网易云跟帖：（也凉了）</li>
+<li>畅言：<a href=" http://changyan.kuaizhan.com" target="_blank" rel="noopener"> http://changyan.kuaizhan.com</a> （需要备案，属实麻烦）</li>
+<li>来必力LiveRe：<a href="https://livere.com " target="_blank" rel="noopener">https://livere.com </a>（韩国网站，使用邮箱注册）</li>
+<li>Hypercomments：<a href="https://www.hypercomments.com " target="_blank" rel="noopener">https://www.hypercomments.com </a>（俄罗斯的，战斗名族）</li>
+<li>valine : <a href="https://github.com/xCss/Valine" target="_blank" rel="noopener">https://github.com/xCss/Valine</a>（大家都用我不用说不过去）</li>
+</ul>
+<p>Hypercomments和LiveRe都是国外的，加载速度贼慢，甚至有被墙的可能。我刚最初使用的来必立LiveRe由于是韩国服务器不仅加载速度极慢，且评论需要认证个人社交账号，认证也比较缓慢，对于博客这类及时观看类的网站来说极其不合适，但也不是没有优点，评论框设计的倒是很美观，在翻看别人的博客搭建经验后找到了一个好用简单的评论系统，那就是 valine。</p>
+
+<h2 id="ss-H2-1557303512937">开启Valine</h2>
+
+<p>我使用的是archer主题，本身就已经集成了valine，因此正常情况下是按照官方文档走就可以了，几分钟就可以上线评论系统。
+
+</p><p><img src="//eliasliangyu.github.io/2019/06/16/给博客添加评论功能/Valine.png" alt="Valine-gitub"></p><p></p>
+<h2 id="ss-H2-1557303512937">注册Leancloud</h2>
+
+<p>评论系统都是放在Leancloud的服务器上的，个人部署的网页仅仅是展示，因此需要在官网注册一个账号。<a href="https://leancloud.cn" target="_blank" rel="noopener">Leancloud官网</a></p>
+
+<p>注册完成提示需要创建一个应用，之后进入<b>应用->设置->应用key<b>
+
+<p>获取你的App ID和App Key，如图：</p>
+<p><img src="//eliasliangyu.github.io/2019/06/16/给博客添加评论功能/key.jpg" alt="应用Key"></p></b></b></p>
+<h2 id="ss-H2-1557303512937">更改配置文件</h2>
+<p>打开主题配置文件_config.yml，找到valine，填入App ID和App Key。</p>
+<pre class="prettyprint"><code class=" hljs vbnet">valine:
+  enable: <span class="hljs-literal">true</span>
+  appid:  your app id
+  appkey: your app <span class="hljs-keyword">key</span>
+</code></pre>
+
+<p>之后在安全中心->Web安全域名 把你的项目域名加入；</p>
+
+<h2 id="ss-H2-1557303512937">完成</h2>
+
+<p>最后在Hexo根目录生成上传文件进行更新上传，完成后刷新页面即可看到评论框了。</p>
 
     </article>
     <!-- license  -->
@@ -404,13 +447,13 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/06/11/iOS-13-不只有深色模式，这-15-个新功能同样值得关注/" title="iOS 13 不只有深色模式，这 15+ 个新功能同样值得关注">
-                    <div class="nextTitle">iOS 13 不只有深色模式，这 15+ 个新功能同样值得关注</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/14/纪念iPhone-XR刷机成砖/" title="纪念iPhone XR刷机成砖">
+                    <div class="prevTitle">纪念iPhone XR刷机成砖</div>
+                </a>
             
         </li>
     </ul>
@@ -426,6 +469,22 @@ height:50vh;
 
     
     
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "KsMxA7Xv4XNPE1fE1XzC6Wu1-gzGzoHsz",
+        appKey: "kE7Tjawef19blReL27CzcvEq",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
 
     <!-- 评论 -->
 </main>
@@ -502,7 +561,7 @@ height:50vh;
     
     <!-- powered by Hexo  -->
     <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
     </div>
     <!-- 不蒜子  -->
     
@@ -514,6 +573,7 @@ height:50vh;
     </div>
     
 </footer>
+
     </div>
     <!-- toc -->
     
@@ -532,7 +592,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">给博客添加评论功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ss-H2-1557303512937"><span class="toc-number">1.1.</span> <span class="toc-text">开启Valine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ss-H2-1557303512937"><span class="toc-number">1.2.</span> <span class="toc-text">注册Leancloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ss-H2-1557303512937"><span class="toc-number">1.3.</span> <span class="toc-text">更改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ss-H2-1557303512937"><span class="toc-number">1.4.</span> <span class="toc-text">完成</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -563,9 +623,29 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 4
         </div>
         <!-- search  -->
         
@@ -581,12 +661,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/11</span><a class="archive-post-title" href="/2019/06/11/hello-world/">Hello World</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/给博客添加评论功能/">给博客添加评论功能</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/11</span><a class="archive-post-title" href="/2019/06/11/iOS-13-不只有深色模式，这-15-个新功能同样值得关注/">iOS 13 不只有深色模式，这 15+ 个新功能同样值得关注</a>
+            <span class="archive-post-date">06/14</span><a class="archive-post-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">纪念iPhone XR刷机成砖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/iOS-13-不只有深色模式，这-15-个新功能同样值得关注/">iOS 13 不只有深色模式，这 15+ 个新功能同样值得关注</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/如何搭建属于自己的个人博客/">如何搭建属于自己的个人博客</a>
         </li>
     
     </ul></div>
@@ -595,6 +685,8 @@ top:50vh;
     <div class="sidebar-tags-name">
     
         <span class="sidebar-tag-name" data-tags="Apple ios"><span class="iconfont-archer">&#xe606;</span>Apple ios</span>
+    
+        <span class="sidebar-tag-name" data-tags="Course"><span class="iconfont-archer">&#xe606;</span>Course</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -638,7 +730,7 @@ jsonContent:
     <script>
     var siteMeta = {
         root: "/",
-        author: "John Doe"
+        author: ""
     }
 </script>
     <!-- CDN failover -->
