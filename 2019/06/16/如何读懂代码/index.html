@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content>
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content>
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>如何读懂代码 · Eliasliangyu&#39;s blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Eliasliangyu&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">如何读懂代码</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Eliasliangyu's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            如何读懂代码
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">11k</span>阅读时长: <span class="post-count reading-time">36 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1>如何读懂代码</h1>
+<p><b><a href="https://www.jianshu.com/p/1850db5d2891" target="_blank" rel="noopener">——/转载自简书jianshu.com/——</a><b></b></b></p>
+<p>我们在写程序时，有不少时间都是在看别人的代码。 例如看小组的代码，看小组整合的守则，若一开始没规划怎么看， 就会看得云山雾罩不知其所然。</p>
+<p>不管是参考也好，从开源抓下来研究也好，为了了解箇中含意，在有限的时间下，不免会对庞大的源代码解读感到压力。</p>
+<p>以下来介绍一下读代码的心法：</p>
+<ol>
+<li>读懂程序代码，使心法皆为我所用。</li>
+<li>摸清架构，便可轻松掌握全貌。</li>
+<li>优质工具在手，读懂程序非难事。</li>
+<li>望文生义，进而推敲组件的作用。</li>
+<li>找到程序入口，再由上而下抽丝剥茧。</li>
+<li>阅读的乐趣，透过程序认识作者。</li>
+</ol>
+<h2>读懂程序，使心法皆为我所用</h2>
+<p>程序是别人写的，只有原作者才真的了解程序的用途及涵义。许多程员心里都有一种不自觉的恐惧感，深怕被迫去碰触其他人所写的程序。但是，与其抗拒接收别人的程序，不如彻底了解相关的语言和惯例，当成是培养自我实力的基石。</p>
+<p>对大多数的程序员来说，撰写程序或许是令人开心的一件事情，但我相信，有更多人视阅读他人所写成的程序为畏途。许多人宁可自己重新写过一遍程序，也不愿意接收别人的程序，进而修正错误，维护它们，甚至加强功能。</p>
+<p>这其中的关键究竟在何处呢？若是一语道破，其实也很简单，程序是别人写的，只有原作者才真的了解程序的用途及涵义。许多程序员心里都有一种不自觉的恐惧感，深怕被迫去碰触其他人所写的程序。这是来自于人类内心深处对于陌生事物的原始恐惧。</p>
+<p>读懂别人写的程序，让你收获满满。不过，基于许多现实的原因，程序员时常受迫要去接收别人的程序。例如，同事离职了，必须接手他遗留下来的工作，也有可能你是刚进部门的菜鸟，而同事经验值够了，升级了，风水轮流转，一代菜鸟换菜鸟。甚至，你的公司所承接的项目，必须接手或是整合客户前一个厂商所遗留下来的系统，你们手上只有那套系统的源代码（运气好时，还有数量不等的文件） 。</p>
+<p>诸如此类的故事，其实时常在程序员身边或身上持续上演着。许多程序员都将接手他人的程序，当做一件悲惨的事情。每个人都不想接手别人所撰写的程序员，因为不想花时间去探索，宁可将生产力花在产生新的程序，而不是耗费在了解这些程序上。</p>
+<p>很遗憾的是，上述的情况对程序员来说很难避免。我们总是必须碰触到其他人所写成的程序，甚至必须了解它，加以修改。对于这项需求，在现今开放源代码的风气如此盛行的今日，你可以透过开放源码学习到新的技术，学习到高手的架构设计，大幅提高学习的效率及效果。你甚至可以直接自开放源代码项目中抽取，提炼出自己所需的程序，站在巨人的肩膀上，直接由彼端获得所需的生产力。从这个观点来看，读懂别人所写的程序，就不再只是从负面观点的“被迫接收” ，而是极具正面价值的“汲取养份。 ”</p>
+<p>先了解系统架构与行为模式，再细读倘若撰写程序是程序员的重要技艺之一，那么读懂别人的程序，接着加以修改，也势必是另一个重要的技艺。</p>
+<p>如果你不能熟悉这项工作，不仅在遭逢你所不愿面对的局面时，无法解决眼前接手他人程序的难题，更重要的是，当你看着眼前现成的程序，却不知如何从中撷取自己所需，导致最后只能入宝山空手回，望之兴叹。</p>
+<p>接触他人的程序，大致上可以分为三种程度：</p>
+<ol>
+<li>了解</li>
+<li>修改，扩充</li>
+<li>抽取，提炼。</li>
+</ol>
+<p>了解别人的程序是最基础的工作，倘若不能了解自己要处理的程序，就甭论修改或扩充，更不可能去芜存菁，从中萃取出自己所需，回收再利用别人所撰写的程序。虽说是“阅读” ，但程序并不像文章或小说一样，透过这种做法，便能够获得一定程度的了解。阅读文章或小说时，几乎都是循序地阅读，你只消翻开第一页，一行行阅读下去即可。但是，有许多程序员在试着阅读其他人的程序时，却往往有不知如何读起的困难。</p>
+<p>或许找到系统的第一页（也就是程序执行的启始点）并不难，但是复杂度高的系统，有时十分庞大，有时千头万绪。</p>
+<p>从程序的启始点开始读起，一来要循序读完所有的程序旷日费时，二来透过这种方式来了解系统，很难在脑中构建出系统的面貌，进而了解到系统真正的行为。所以，阅读程序员的重点，不在于读完每一行程序员，而是在于有效率地透过探索及阅读，从而了解系统的架构及行为模式。以便在你需要了解任何片段的细节实现时，能够很快在脑上对映到具体的程序员位置，直到那一刻，才是细读的时机。</p>
+<h3>熟悉沟通语言与惯例用语</h3>
+<p>不论如何，有些基本的准备，是阅读他人程序员时必须要有的。</p>
+<p>首先，你最好得了解程序员使用的编程语言。想要读懂法文写成的小说，总不能连法文都不懂吧。有些情况则很特殊。我们虽然不懂该程序员撰写所用的语言，但是因为现代语言的高阶化，而且流行的编程语言多半都是血统相近，所以即使不那么熟悉，有时也可勉力为之。</p>
+<p>除了认识所用语言之外，再来就是要先确认程序员所用的命名惯例（命名惯例） 。了解命名惯例很重要，不同的程序员或开发团队，差异可能很大。</p>
+<p>这命名惯例涵盖的范围通常包括了变数的名称，函数的名称，类别（如果是面向对象的话）的名称，源代码档案，甚至是项目建构目录的名称。倘若使用了像设计模式之类的方法，这些名称更有一些具体的表述方式。</p>
+<p>命名惯例有点像是程序员在编程语言之上，另行建构的一组沟通行话。程序员会透过共通约束，遵守的命名惯例，来表达一些较高阶的概念。例如，有名的匈牙利式命名法，便将变数名称以属性，型别，说明合并在一起描述。对程序员来说，这种方式能够提供更丰富的资讯，以了解该变数的作用及性质。</p>
+<p>对程序员阅读来说，熟悉这个做法之所以重要，是因为当你了解整个系统所采用的惯例时，你便能试着以他们所共同操用的语汇来进行理解。倘若，不能了解其所用的惯例，那么这些额外提供的资讯，就无法为你所用。像以设计模式写成的程序员，同样处处充满着模式的名称，诸如：工厂，门面，代理等等。以这些名称指涉的类别，也直接透过名称，表达了它们自身的作用。对于懂得这命名惯例的读者来说，不需要深入探索，也能很快捕捉到这些类别的意义。</p>
+<p>当你拿到一套必须阅读的程序员时，最好先取得命名惯例的说明文件。然而，并不是每套程序员都附有此类的说明文件。另一个方式，就是自己到程序员中，大略浏览一遍，有经验的程序员可以轻易发掘出该系统所用的命名惯例。</p>
+<p>常见的命名方式不脱那几类，这时候经验就很重要，倘若你知道的惯例越多，就越能轻易识别他人所用的惯例。如果运气很糟，程序员所用的惯例是前所未见的，那么你也得花点时间归纳，凭自己的力量找出这程序员命名上的规则。</p>
+<h3>掌握程序员撰写者的心态与习惯</h3>
+<p>大多数的程序员，基本上都依循一致的命名惯例。不过运气更差的时候，一套系统中可能会充斥着多套命名惯例。这有可能是因为开发团队由多组人马所构成，每组人马都有不同的文化，而在项目开发管理又没有管控得宜所造成。最糟的情况，程序员完全没有明显的惯例可言，这时候阅读的难度就更高了。</p>
+<p>想要阅读程序员，得先试着体会程序员作者的“心” 。想要这么做，就得多了解对方所使用的语言，以及惯常运用的语汇。在下一回中，我们将继续探讨阅读程序员的相关议题。</p>
+<h2>摸清架构，便可轻松掌握全貌</h2>
+<p>在本文中，我们的重点放在：要了解一个系统，最好是采取由上至下的方式。先试着捕捉系统架构性的观念，不要过早钻进细节，因为那通常对于你了解全貌，没有多大的帮助。阅读程序员不需要从第一行读起，我们的目的并不是在于读遍每一段程序员。</p>
+<p>基于许多原因，程序员需要阅读其他人所写成的程序员。而对程序设计2.0时代的程序员来说，最正面的价值在于，能读懂别人程序的人，才有能力从中萃取自己所需的程序，借以提高生产力。</p>
+<h3>阅读程序员的目的，在于了解全貌而非细节</h3>
+<p>想要读懂别人程序员的根本基础，便是了解对方所用的编程语言及命名惯例。有了这个基础之后，才算是具备了基本的阅读能力。正如我之前提到的─ ─想要读懂法文写成的小说，总不能连法文都不懂吧。阅读程序员和阅读文学作品，都需要了解撰写所用的语言及作者习用的语汇。</p>
+<p>但我们在阅读文学作品通常是采循序的方式，也就是从第一页开始，一行一行地读下去，依循作者为你铺陈的步调，逐渐进到他为你准备好的世界里。阅读程序员却大大不同。我们很少从第一行开始读起，因为除非它是很简单的单执行绪程序，否则很少这么做。因为要是这么做，就很难了解整个系统的全貌。是的，我们这边提到了一个重点，阅读程序员的目的在于了解系统的全貌，而不是在于只是为了地毯式的读遍每一段程序员。</p>
+<p>就拿面向对象编程语言所写成的系统来说，整个系统被拆解，分析成为一个个独立的类别。阅读个别类别的程序员，或许可以明白每项类别物件个别的行为。但对于各类别物件之间如何交互影响，如何协同工作，又很容易陷入盲人摸象的困境。这是因为各类别的程序员，只描述个别物件的行为，而片段的阅读就只能造就片面的认识。</p>
+<h3>由上而下理清架构后，便可轻易理解组成关系</h3>
+<p>如果你想要跳脱困境，不想浪费大量时间阅读程序员，却始终只能捕捉到对系统片段认识，就必须转换到另一种观点来看待系统。从个别的类别行为着手，是由下至上（自下而上）的方法;在阅读程序员时，却应该先采由上至下（自上而下）的方式。对程序员的阅读来说，由上至下意谓着，你得先了解整个系统架构。</p>
+<p>系统的架构是整个系统的骨干，支柱。它表现出系统最突出的特征。知道系统架构究竟属于那一种类型，通常大大有益于了解系统的个别组成之间的静态及动态关系。有些系统因为所用的技术或框架的关系，决定了最上层的架构。例如，采用的Java Servlet的/ JSP的技术的应用系统，最外层的架构便是以J2EE的（或起码的J2EE中的Web容器）为根本。</p>
+<p>使用的Java Servlet的/ JSP的技术时，决定了某些组成之间的关系。例如， Web容器依据web.xml中的内容载入所有的Servlets ，听众，以及过滤器。每当语境发生事件（例如初始化）时，它便会通知监听类别。每当它收到来自客户端的请求时，便会依循设定的所有过滤器链，让每个过滤器都有机会检查并处理此一请求，最后再将请求导至用来处理该请求的Servlet的。</p>
+<p>当我们明白某个系统采用这样的架构时，便可以很容易地知道各个组成之间的关系。即使我们还不知道究竟有多少Servlets ，但我们会知道，每当收到一个请求时，总是会有个相对应的服务器来处理它。当想要关注某个请求如何处理时，我应该去找出这个请求对应的服务器。</p>
+<h3>了解架构，必须要加上层次感</h3>
+<p>同样的，以爪哇写成的网页应用程序中，也许会应用诸如Struts的之类的的MVC框架，以及像Hibernate的这样的资料存取框架。它们都可以视为最主要的架构下的较次级架构。而各个应用系统，甚至有可能在Struts的及休眠之下，建立自有的更次级的架构。</p>
+<p>也就是说，当我们谈到“架构”这样的观念时，必须要有层次感。而不论是那一层级的架构，都会定义出各自的角色，以及角色间的关系。对阅读者来说，相较于直接切入最细微的单一角色行为，不如了解某个特定的架构中，究竟存在多少角色，以及这些角色之间的互动模式，比较能够帮助我们了解整个系统的运作方式。</p>
+<p>这是一个很重要的关键，当你试着进到最细节处之前，应该先试着找出参与的角色，及他们之间的关系。例如，对事件驱动式的架构而言，有3个很重要的角色。一个是事件处理的分派器（事件调度） ，一个是事件产生者（事件发生器） ，另一个则是事件处理器（事件处理程序） 。</p>
+<p>事件产生器产生事件，并送至事件分派器，而事件分派器负责找出各事件相对应的事件处理器，并且转交该事件，并命令事件处理器加以处理。像的图形用户界面的Windows应用程序，便是采用事件驱动式的架构。</p>
+<p>当你知道此类的应用程序皆为事件驱动式的架构时，你便可以进一步得知，在这样的架构下会有3种主要的角色。虽然也许还不清楚整个系统中，究竟会需要处理多少事件的类型，但对你而言，已经建立了对系统全貌最概观的认识。</p>
+<p>虽然你还不清楚所有的细节，但诸如确切会有那些事件类型之类的资讯，在此刻还不重要─ ─不要忘了，我们采取的是由上而下的方式，要先摸清楚主建筑结构，至于壁纸的花色怎么处理，那是到了尾声时才会做的事。</p>
+<h3>探索架构的第一件事：找出系统如何初始化</h3>
+<p>有经验的程序员，对于时常被运用的架构都很熟悉。常常只需要瞧上几眼，就能明白一个系统所用的架构，自然就能够直接联想到其中会存在的角色，以及角色间的关系。然而，并不是每个系统所用的架构，都是大众所熟悉，或是一眼能够望穿的。这时候，你需要探索。目标同样要放在界定其中的角色，以及角色间的静态，动态关系。</p>
+<p>不论某个系统所采用的架构是否为大部分人所熟知的，在试着探索一个系统的长相时，我们应该找出来几个答案，了解在它所用的架构下，下列这件事是如何被完成的：一，系统如何初始化，二，与这个系统相接的其他系统（或使用者）有那些，而相接的界面又是什么;三，系统如何反应各种事件，四，系统如何处理各种异常及错误。</p>
+<p>系统如何初始化是很重要的一件事，因为初始化是为了接下来的所有事物而做的准备。从初始化的方式，内容，能知道系统做了什么准备，对于系统会有什么行为展现，也就能得窥一二了。之所以要了解与系统相接的其他系统（或使用者），为的是要界定出系统的边界。其他的系统可能会提供输入给我们所探索的系统，也可能接收来自这系统的输出，了解这边界所在，才能确定系统的外观。</p>
+<p>而系统所反应的事件类型，以及如何反应，基本上就代表着系统本身的主要行为模式。最后，我们必须了解系统处理异常及错误的方式，这同样也是系统的重要行为，但容易被忽略。之前，我们提到必须先具备一个系统的语言基础，才能够进一步加以阅读，而在本文中，我们的重点放在：要了解一个系统，最好是采取由上至下的方式。先试着捕捉系统架构性的观念，不要过早钻进细节，因为那通常对于你了解全貌，没有多大的帮助。</p>
+<h2>优质工具在手，读懂程序非难事</h2>
+<p>系统的复杂度往往超过人脑的负荷。阅读程序员的时候，你会需要更多工具提供协助。使用好的整合式开发环境（ IDE ）的或文字编辑器，就能提供最基本的帮助。</p>
+<p>阅读程序员的动作，可以是很原始的，利用最简单的文字编辑器，逐一开启源代码，然后凭借着一己的组织能力，在不同的程序员间跳跃，拼凑出脑中想要构建的图像。</p>
+<p>不过，系统的复杂度往往超过人脑的负荷。阅读程序员的时候，你会需要更多工具提供协助。使用好的整合式开发环境（ IDE ）的或文字编辑器，就能提供最基本的帮助。</p>
+<h3>善用文字编辑器或IDE中，加速解读程序员</h3>
+<p>许多文字编辑器提供了常见编程语言的语法及关键字标示功能。这对于阅读来说，绝对能够起很大的作用。有些文字编辑器（例如我常用的编辑器及偶而使用的记事本+ + ），甚至能够自动列出某个原始档中所有定义的函数清单，更允许你直接从清单中选择函数，直接跳跃到该函数的定义位置。这对于阅读程序员的人来说，就提供了极佳的便利性。</p>
+<p>因为在阅读程序员时，最常做的事，就是随着程序中的某个控制流，将阅读的重心，从某个函数移至它所调用的另一个函数。所以对程序员来说，阅读程序员时最常做的事之一就是：找出某个函数位在那一个原始档里，接着找到该函数所在的位置。</p>
+<p>好的的IDE能够提供的协助就更多了。有些能够自动呈现一些额外的资讯，最有用的莫过于函数的原型宣告了。例如，有些的IDE支援当游标停留在某函数名称上一段时间后，它会以提示的方式显示该函数的原型宣告。</p>
+<p>对阅读程序员的人来说，在看到程序员中调用到某个函数时，可以直接利用这样的支援，立即取得和这个函数有关的原型资讯，马上就能知道调用该函数所传入的各个引数的意义，而不必等到将该函数的定义位置找出后，才能明白这件事。</p>
+<h4>
+<code>grep</code>是一个基本而极为有用的工具</h4>
+<p>除了选用好的文字编辑器或的IDE 之外，还有一个基本，但却极为有用的工具，它就是<code>grep</code>。熟悉的Unix/Linux系统的程序员对<code>grep</code>这个程序多半都不陌生。 <code>grep</code> 最大的用途，在于它允许我们搜寻某个目录（包括递回进入所有子目录）中所有指定档案，是否有符合指定条件（常数字串或正规表示式）档案。</p>
+<p>倘若有的话，则能帮你指出所在的位置。这在阅读程序员时的作用极大。当我们随着阅读的脚步，遇上了任何一个不认识，但自认为重要的类别，函数，资料结构定义或变数，我们就得找出它究竟位在这茫茫程序员海中的何处，才能将这个图块从未知变为已知。</p>
+<p>grep之所以好用，就是在于当我们发现某个未知的事物时，可以轻易地利用它找出这个未知的事物究竟位在何方。此外，虽说grep按是Unix系统的标准公用程序之一，但是像视窗这样子的平台，也有各种类型的<code>grep</code>命令。对于在视窗环境工作的程序员来说，可以自行选用觉得称手的工具。</p>
+<h4>
+<code>gtags</code> 可建立索引，让搜索更有效率</h4>
+<p><code>grep</code> 虽然好用，但是仍然有一些不足之处。第一个缺点在于它并不会为所搜寻的源代码档案索引。每当你搜寻时，它都会逐一地找出所有的档案，并且读取其中的所有内容，过滤出满足指定条件的档案。当项目的源代码数量太大时，就会产生搜寻效率不高的问题。</p>
+<p>第二个缺点是它只是一个单纯的文字档搜寻工具，本身并不会剖析源代码所对应的语言语法。当我们只想针对“函数”名称进行搜寻时，它有可能将注解中含有该名称的源代码，也一并找了出来。</p>
+<p>针对<code>grep</code>的缺点，打算阅读他人程序员的程序员，可以考虑使用像是<code>gtags</code>这样子的工具。 <code>gtags</code>是源代码的GNU全局标记系统，它不只搜寻文字层次，而且因为具备了各种语言的语法剖析器，所以在搜寻时，可以只针对和语言有关的元素，例如类别名称，函数名称等。</p>
+<p>而且，它能针对源代码的内容进行索引，这意谓一旦建好索引之后，每次搜寻的动作，都毋需重新读取所有源代码的内容并逐一搜寻。只需要以现成的索引结构为基础，即可有效率的寻找关键段落。</p>
+<p><code>gtags</code> 提供了基于命令列的程序，让你指定源代码所在的目录执行建立索引的动作。它同时也提供程序让你得如同操作grep按一般，针对索引结构进行搜寻及检索。它提供了许多有用的检索方式，例如找出项目中定义某个资料结构的档案及定义所在的行号，或者是找出项目中所有引用某资料结构的档案，以及引用处的行号。</p>
+<p>这么一来，你就可以轻易地针对阅读程序员时的需求予以检索。相较于<code>grep</code> 按所能提供的支援，<code>gtags</code>这样的工具，简直是强大许多。</p>
+<h2>望文生义，进而推敲组件的作用</h2>
+<p>先建立系统的架构性认识，然后透过名称及命名惯例，就可以推测出各组件的作用。例如：当AOL的Winamp尝试着初始化一个插件时，它会调用这个结构中的初始化函数，以便让每个插件程序有机会初始化自己。当AOL的Winamp打算结束自己或结束某个插件的执行时，便会调用结束函数。</p>
+<p>在阅读程序的细节之前，我们应先试着捕捉系统的运作情境。在采取由上至下的方式时，系统性的架构是最顶端的层次，而系统的运作情境，则是在它之下的另一个层次。</p>
+<h2>好的说明文件难求，拼凑故事的能力很重要</h2>
+<p>有些系统提供良善的说明文件，也许还利用UML的充分描述系统的运行情况。那么对于阅读者来说，从系统的分析及设计文件着手，便是快速了解系统运作情境的一个途径。</p>
+<p>但是，并不是每个软件项目都伴随着良好的系统文件，而许多极具价值的开放源代码项目，也时常不具备此类的文件。对此，阅读者必须尝试自行捕捉，并适度地记录捕捉到的运作情境。</p>
+<p>我喜欢将系统的运作情境，比拟成系统会上演的故事情节。在阅读细节性质的程序员前，先知道系统究竟会发生那些故事，是必备的基本功课。你可以利用熟悉或者自己发明的表示工具，描述你所找到的情境。甚至可以只利用简单的列表，直接将它们列出。只要能够达到记录的目的，对程序员阅读来说，都能够提供帮助。或者，你也可以利用基于UML中的类别图，合作图，循序图之类的表示方法，做出更详细的描述。<br>
+当你能够列出系统可能会有的情境，表示你对系统所具备的功能，以及在各种情况下的反应，都具备概括性的认识。以此为基础，便可在任何需要的时候，钻进细节处深入了解。</p>
+<h2>探索架构的第一步──找到程序的入口</h2>
+<p>在之前，我们在一个开发项目中，曾经需要将系统所得到的的MP3音讯档，放至iPod的这个极受欢迎的播放设备中。</p>
+<p>虽然iPod的本身也可以做为可移动式的储存设备，但并不是单纯地将MP3播放档案放到中的iPod ，就可以让苹果的播放器认得这个档案，甚至能够加以播放。<br>
+这是因为苹果利用一个特殊的档案结构（ iTunes的数据库） ，记录播放器中可供播放的乐曲，播放清单以及乐曲资讯（例如专辑名称，乐曲长度，演唱者等） 。为了了解并且试着重复使用既有的程序员，我们找到了一个AOL的Winamp的iPod的外挂程序（插件） 。</p>
+<p>AOL的Winamp是个人电脑上极受欢迎的播放软件，而我们找到的外挂程序，能让的软件直接显示连接至电脑的的iPod中的歌曲资讯，并且允许的软件直接播放。</p>
+<p>我们追踪与阅读这个外挂程序的思路及步骤如下，首先，我们要先了解外挂程序的系统架构。很明显的，大概浏览过源代码后，我们注意到它依循着AOL的Winamp为插件程序所制定的规范，也就是说，它是实现成的Windows上的DLL的，并且透过一个叫做winampGetMediaLibraryPlugin的DLL的函数，提供一个名为winampMediaLibraryPlugin的结构。<br>
+当我们不清楚系统的架构究竟为何时，我们会试着探索，而第一步，便是找到程序的入口。如何找到呢？这会依程序的性质不同而有所差别。<br>
+对一个本身就是可独立执行的程序来说，我们会找启动程序的主要函数，例如对的C/C++来说就是<code>main()</code>函数，而对Java来说，便是静态方法<code>main()</code> 。在找到入口后，再逐一追踪，摸索出系统的架构。</p>
+<p>但有时，我们阅读的程序如果是类库或函数库，本身并不具单一入口，此类的程序具有多重的入口──每个允许用户端程序调用的函数或类别，都是它可能的入口。</p>
+<p>例如，对AOL的Winamp的 iPod的插件来说，它是一个动态链接库形式的函数库，所以当我们想了解它的架构时，必须要先找出它对外提供的函数，而对的Windows的DLL来说，对外提供的函数，皆会以dllexport这个关键字来修饰。所以，不论是利用grep按或gtags之类的工具，我们可以很快从源代码中，找到它只有一个DLL的函数（这对我们而言，真是一个好消息） ，而这个函数便是上述的winampGetMediaLibraryPlugin 。</p>
+<h2>系统多会采用相同的架构处理插件程序</h2>
+<p>如果经验不够的话，也许无法直接猜出这个函数的作用。 不过，如果你是个有经验的程序员，多半能从函数所回传的结构，猜出这个函数实际的用途。而事实上，当你已经知道它是一个插件程序时，就应该要明白，它可能采用的，就是许多系统都采用的相同架构处理插件程序。</p>
+<p>当一个系统采用所谓插件形式的架构时，它通常不会知道它的插件究竟会怎么实现，实现什么功能。它只会规范插件程序需要满足某个特定界面。当系统初始化时，所有的插件都可以依循相同的方式，向系统注册，合法宣示自己的存在。</p>
+<p>虽然系统并不确切知道插件会有什么行为展现，但是因为它制定了一个标准的界面，所以系统仍然可以预期每个插件能够处理的动作类型。这些动作具体上怎么执行，对系统来说并不重要。这也正是面向对象程序设计中的“多态”观念。</p>
+<h2>随着实践经验，归纳常见的架构模式</h2>
+<p>我想表达的重点，是当你“涉世越深”之后，所接触的架构越多，就越能触类旁通。只需要瞧上几眼，就能明白系统所用的架构，自然就能够直接联想到其中可能存在的角色，以及角色间的关系。</p>
+<p>像上述的插件程序手法，时常可以在许多允许“外挂”程序员的系统中看到。所以，有经验的阅读者，多半能够立即反应，知道像这样的系统的软件，应该是让每个插件程序，都写成DLL的函数库。</p>
+<p>而每个插件的DLL的函数库中，都必须提供<code>winampGetMediaLibraryPlugin()</code>这个函数 。如果你熟悉设计模式，你更会知道这是简单工厂方法这个设计模式的运用。<br>
+<code>winampGetMediaLibraryPlugin()</code> 所回传的<code>winampMediaLibraryPlugin</code>结构，正好就描述了每个AOL的Winamp插件的实现内容。</p>
+<h3>善用名称可加速了解</h3>
+<p>利用<code>gtags</code>这个工具，我们立即发现，这个插件它所定义的初始化，退出， <code>PluginMessageProc</code>这三个名称，都是函数名称。这暗示在方法重载的作用下，它们都是在某些时间点，会由AOL的Winamp核心本体调用的函数。</p>
+<p>名称及命名惯例是很重要的。看到 “初始化” ，我们会知道它的作用多半是进行初始化的动作，而“退出”大概就是结束时处理函数，而PluginMessageProc多半就是各种讯息的处理常式（过程通常是程序的简写，所以<code>PluginMessagePro</code>c意指插件讯息程序）了。</p>
+<p>“望文生义”很重要，我们看到函数的名称，就可以猜想到它所代表的作用，例如：当AOL的Winamp尝试着初始化一个插件时，它会调用这个结构中的初始化函数，以便让每个插件程序有机会初始化自己;当AOL的Winamp打算结束自己或结束某个插件的执行时，便会调用退出函数。当AOL的Winamp要和插件程序沟通时，它会发送各种不同的讯息至插件，而插件程序必须对此做出回应。</p>
+<p>我们甚至不需要检查这几个函数的内容，就可以做出推测，而这样的假设，事实上也是正确的。</p>
+<h2>阅读的乐趣：透过程序员认识作者</h2>
+<p>即便每个人的写作模式多半受到他人的影响，程序通常还是会融合多种风格，而成为自己独有的特色，如果你知道作者程序设计的偏好，阅读他的程序就更得心应手。</p>
+<p>阅读程序时，多半会采取由上而下，抽丝剥茧的方式。透过记录层层展开的树状结构，程序员可以逐步地建立起对系统的架构观，而且可以依照需要的粒度（粒度） ，决定展开的层次及精致程度。</p>
+<p>建立架构观点的认识是最重要的事情。虽然这一系列的文章前提为“阅读他人的程序” ，但我们真正想做的工作，并不在于彻底地详读每一行程序员的细节，而是想要透过重点式的程序“摘读” ，达到对系统所需程度的了解。每个人在阅读程序员的动机不尽相同，需要了解的程度也就有深浅的分别。只有极为少数的情况下，你才会需要细读每一行程序。</p>
+<h3>阅读程序是新时代程序员必备的重要技能</h3>
+<p>本文至此已近尾声，回顾曾探讨的主题，我们首先研究了阅读程序的动机。尤其在开放源代码的风气如此之盛的情况下，妥善利用开放源代码所提供的资源，不仅能够更快学习到新的技术，同时在源代码版权合适时，还可以直接利用现成的程序，大幅地提高开发阶段的生产力。所以，阅读程序俨然成为了新时代程序员必备的重要技能之一。</p>
+<p>接着，我们提到了阅读程序前的必要准备，包括了对编程语言，命名惯例的了解等等。在此之后，我们反覆提起了“由上而下”的阅读方向的重要性。<br>
+由上而下的阅读方式，是因为我们重视架构更胜于细节。从最外层的架构逐一向内探索，每往内探索一层，我们了解系统的粒度就增加了一个等级。当你识别出系统所用的架构时，便能够轻易了解在这个架构下会有的角色，以及它们之间的动态及静态的关系。如此一来，许多资讯便不言可喻，毋需额外花费力气，便能够快速理解。</p>
+<h3>好的名称能够摘要性地指出实例的作用</h3>
+<p>追踪源代码时，固然可以用本来的方式，利用编辑器开启所需的档案，然后利用编辑器提供的机制阅读，但是倘若能够善用工具，阅读程序员的效率及品质都能大大提升。在本文中，我们介绍了一些工具，或许你还可以在坊间找到其他更有用的工具。</p>
+<p>我在这一系列的文章中，实际带着大家阅读，追踪了一个名为ml_pod的开放源代码项目。它是一个AOL的Winamp的iPod的外挂程序。在追踪的过程中，我们试着印证这一系列文中所提到的观念及方法。我们采用逐渐开展的树状结构来记录追踪的过程，并借以建立起对系统的概观认识。</p>
+<p>就源代码的阅读来说，之前的讨论涉及了工具面及技巧面。但还有一些主题不在这两个范畴之内，例如，善用名称赋予你的提示。名称做为隐喻（隐喻）的作用很大，好的名称能够摘要性地点出实体的作用，例如我们看到<code>autoDetectIpod()</code>，自然而然能够想像它的作用在于自动（自动）侦测（检测）的iPod的存在。</p>
+<p>我们在展开树状结构时，有时候需要预看一层，有时却不需要这么做，便可得到印证。程序员都会有惯用的名称以及组合名称的方法，倘若能够从名称上理解，便毋需钻进细节，可以省去相当多的时间。例如，当我们看到parseIpodDb （ ）时，便可以轻易了解它是剖析（解析）的iPod的资料库（ DB ）的，因此便不需要立即钻进parseIpodDb （ ）中查看底细。</p>
+<p>尽管如此，能否理解程序命名的用意，和自身的经验以及是否了解原作者的文化背景，是息息相关的。</p>
+<p>命名本身就是一种文化产物。不同的程序员文化，就会衍生出不同的命名文化。当你自己的经验丰富，看过及接触过的程序员也多时，对于名称的感受及联想的能力自然会有不同。</p>
+<p>这种感受和联想的能力，究竟应该如何精进，很难具体描述。就我个人的经验，多观察不同命名体系的差异，并且尝试归纳彼此之间的异同，有助于更快地提升对名称的感受及联想力。</p>
+<h3>转换立场，理解作者的思考方式</h3>
+<p>除了工具及技巧之外， “想要阅读程序，得先试着阅读写这个程序的程序员的心。 ”这句话说来十分抽象，或许也令人难以理解。</p>
+<p>当你在阅读一段程序员时，或许可以试着转换自己的立场，从旁观者的角度转换成为写作者的心态，揣摩原作者的心理及处境。当你试着设身处地站在他的立场，透过他的思考方式来阅读，追踪他所写下的程序员，将会感觉更加流畅。</p>
+<p>许多软件项目，都不是由一个程序员所独力完成。因此，在这样的项目中，便有可能呈现多种不同的风格。</p>
+<p>许多项目会由架构师决定主体的架构及运作，有既定实施的命名惯例，及程序设计需要遵守方针。在多人开发的模式下，越是好的软件项目，越看不出某程序片段究竟是由谁所写下的。</p>
+<p>不过，有些开放源代码的项目，往往又整合了其他开放源代码的项目。有的时候，也很难求风格的统一，便会出现混杂的情况。好比之前提到的ml_pod项目，因为程序中混合了不同的来源，而呈现风格不一致的情况。</p>
+<p>我在阅读非自己所写的程序时，会观察原作者写作的习惯，借以对应到脑中所记忆的多种写作模型。在阅读的过程中，读完几行程序，我会试着猜想原作者在写下这段程序时的心境。他写下这段程序的用意是什么？为什么他会采取这样的写法？顺着原作者的思考理路阅读，自己的思考才能更贴近对方写作当时的想法。</p>
+<p>当你短暂化身为原作者时，才能更轻易的理解他所写下的程序。 如果你能知道原作者的背景，程序设计时的偏好，阅读他的程序，就更能得心应手了。</p>
+<h3>从程序员着手认识作者独有的风格，进而见贤思齐</h3>
+<p>我在阅读别人写下的程序时，我会试着猜想，原作者究竟是属于那一种“流派”呢？每个人都有自己独特的写作模式，即便每个人的写作模式多半受到他人的影响─ ─不论是书籍的作者，学习过程中的指导者，或一同参与项目的同侪，但每个程序员通常会融合多种风格，而成为自己独有的风格。</p>
+<p>面向对象的基本教义派，总是会以他心中觉得最优雅的面向对象方式来撰写程序。而阅读惯用，善用设计模式的程序员所写下的程序时，不难推想出他会在各种常见的应用情境下，套用哪些模式。</p>
+<p>有些时候，在阅读之初，你并不知道原作者的习性跟喜好，甚至你也不知道他的功力。但是，在阅读之后，你会慢慢地从一个程序员所写下的程序，开始认识他。</p>
+<p>你或许会在阅读他人的程序时，发现令人拍案叫绝的技巧或设计。你也有可能在阅读的同时，发现原作者所留下的缺失或写作时的缺点，而暗自警惕于心。这也算是阅读他人程序时的一项乐趣。</p>
+<p>当你从视阅读他人的程序为畏途，转变成为可以从中获取乐趣的时候，我想，你又进到了另一个境界。</p>
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/16/给博客添加评论功能/" title="给博客添加评论功能">
+                    <div class="prevTitle">给博客添加评论功能</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "KsMxA7Xv4XNPE1fE1XzC6Wu1-gzGzoHsz",
+        appKey: "kE7Tjawef19blReL27CzcvEq",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ylu971211@gmail.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Eliasliangyu" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">如何读懂代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">读懂程序，使心法皆为我所用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">熟悉沟通语言与惯例用语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">掌握程序员撰写者的心态与习惯</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">摸清架构，便可轻松掌握全貌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.1.</span> <span class="toc-text">阅读程序员的目的，在于了解全貌而非细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.2.</span> <span class="toc-text">由上而下理清架构后，便可轻易理解组成关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.3.</span> <span class="toc-text">了解架构，必须要加上层次感</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.4.</span> <span class="toc-text">探索架构的第一件事：找出系统如何初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">优质工具在手，读懂程序非难事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.1.</span> <span class="toc-text">善用文字编辑器或IDE中，加速解读程序员</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">
+grep是一个基本而极为有用的工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">
+gtags 可建立索引，让搜索更有效率</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">望文生义，进而推敲组件的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">好的说明文件难求，拼凑故事的能力很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">探索架构的第一步──找到程序的入口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">系统多会采用相同的架构处理插件程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">随着实践经验，归纳常见的架构模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.1.</span> <span class="toc-text">善用名称可加速了解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.9.</span> <span class="toc-text">阅读的乐趣：透过程序员认识作者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.9.1.</span> <span class="toc-text">阅读程序是新时代程序员必备的重要技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.9.2.</span> <span class="toc-text">好的名称能够摘要性地指出实例的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.9.3.</span> <span class="toc-text">转换立场，理解作者的思考方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.9.4.</span> <span class="toc-text">从程序员着手认识作者独有的风格，进而见贤思齐</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 5
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/如何读懂代码/">如何读懂代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/给博客添加评论功能/">给博客添加评论功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/14</span><a class="archive-post-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">纪念iPhone XR刷机成砖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/iOS-13-不只有深色模式，这-15-个新功能同样值得关注/">iOS 13 不只有深色模式，这 15+ 个新功能同样值得关注</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/如何搭建属于自己的个人博客/">如何搭建属于自己的个人博客</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Apple ios"><span class="iconfont-archer">&#xe606;</span>Apple ios</span>
+    
+        <span class="sidebar-tag-name" data-tags="Course"><span class="iconfont-archer">&#xe606;</span>Course</span>
+    
+        <span class="sidebar-tag-name" data-tags="experience"><span class="iconfont-archer">&#xe606;</span>experience</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: ""
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
