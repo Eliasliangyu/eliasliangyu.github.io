@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content>
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content>
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Chrome扩展推荐 · Eliasliangyu&#39;s blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Eliasliangyu&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Chrome扩展推荐</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Eliasliangyu's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Chrome扩展推荐
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.3k</span>阅读时长: <span class="post-count reading-time">18 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/19</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p><b><a href="https://sspai.com/post/55164" target="_blank" rel="noopener">——/转载自少数派sspai.com/——</a><b></b></b></p>
+
+<div><h2 id="ss-H2-1560310385817">让网页焕新颜</h2>
+
+<p>浏览器的本职工作，当然是访问网页。不过，总有一些网站的设计让我们心生不快：铺天盖地的广告、陈旧过时的 UI、繁复难用的交互……而本节介绍的 8 款扩展，就能解决这些问题。</p>
+
+<h3 id="ss-H3-1560310388077">Stylus</h3>
+
+<p>Stylus 是一款基于知名网页美化工具 Stylish 1.5.2 版本开发的开源扩展，允许你通过编辑 CSS 为网页创建自定义样式、主题等。安装后，Stylus 便会智能提示适用于当前网站的用户样式，可以轻松安装使用。如果你略懂编程，还可以自己修改或创建样式，将网页调教为自己喜欢的模样。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401508.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="Stylus 样式管理" data-original="https://cdn.sspai.com/editor/u_713147/15602229401508.png"><figcaption class="ss-image-caption">Stylus 样式管理</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401522.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="Stylus 样式详情" data-original="https://cdn.sspai.com/editor/u_713147/15602229401522.png"><figcaption class="ss-image-caption">Stylus 样式详情</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401535.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="「百度轻」样式效果预览" data-original="https://cdn.sspai.com/editor/u_713147/15602229401535.gif"><figcaption class="ss-image-caption">「百度轻」样式效果预览</figcaption></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/styl-us/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Stylus。</p>
+
+<p>P.S. 如果你正在使用 Stylish，其已被原开发者出售，曾被曝光后台窃取用户隐私数据，建议卸载。Stylus 则基于由原作者维护的最后一个版本，并删除了所有追踪功能，更好地保护隐私。</p>
+
+<p><strong>关联阅读：</strong><a href="https://sspai.com/post/45537" target="_blank" rel="noopener">这款网页美化扩展跟 Stylish 一样好用，但它不会偷看你的浏览历史：Stylus</a></p>
+
+<h3 id="ss-H3-1560310392539">简悦</h3>
+
+<p>尽管 Chrome 75 已经为我们带来了原生的阅读模式，但其仍有诸多不足：入口深、选项少、适配差……简悦则完美解决了这些问题，它手动适配了数百个常用网站，支持颜色主题、字体、间距等多种样式切换。对于未适配的网站，简悦还提供了临时聚焦模式，帮助你只关注内容，不受其它元素干扰。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401549.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="阅读模式效果" data-original="https://cdn.sspai.com/editor/u_713147/15602229401549.gif"><figcaption class="ss-image-caption">阅读模式效果</figcaption></figure>￼
+
+<p>简悦更强大的地方，在于丰富的动作和插件支持。你可以将网页内容一键分享至微博、Twitter，也可以发送至印象笔记、Pocket 暂存，或者干脆直接推送至 Kindle 继续阅读。还是没有你想要的功能？简悦支持安装第三方插件，实现无图模式、划词搜索、全文翻译等更多特性，等你发掘。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401562.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="简悦分享动作" data-original="https://cdn.sspai.com/editor/u_713147/15602229401562.png"><figcaption class="ss-image-caption">简悦分享动作</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401576.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="简悦插件中心" data-original="https://cdn.sspai.com/editor/u_713147/15602229401576.png"><figcaption class="ss-image-caption">简悦插件中心</figcaption></figure>￼
+
+<p>你可以在 <a href="http://ksria.com/simpread/" target="_blank" rel="noopener">官网</a>、<a href="https://chrome.google.com/webstore/detail/simpread-reader-view/ijllcpnolfcooahcekpamkbidhejabll" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/simpread/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取简悦。</p>
+
+<p><strong>关联阅读：</strong><br></p><ul><li><a href="https://sspai.com/post/39491" target="_blank" rel="noopener">为了完美阅读模式这个小目标 ，我适配了 160+ 个网站，因此诞生了它 - 简悦</a></li><li><a href="https://sspai.com/post/52492" target="_blank" rel="noopener">不只是「完美」阅读模式，他想用这款阅读工具帮你更好获取知识：专访简悦 | 幕后</a></li></ul>
+
+
+
+<h3 id="toc_3--NaN">Dark Reader</h3>
+
+<p>继 macOS Mojave 后，刚亮相的 iOS 13 也为我们带来了原生的黑暗模式。如果你希望在全平台获得一致的浏览体验，Dark Reader 就能帮上忙。它可以智能反转网页主体颜色，保证图片辨识度的情况下将背景设为深色，呵护眼部。在设置中，你还可以手动调整颜色、对比度、滤镜等。如果你是高级玩家，还可以在开发者工具中直接编写 CSS，可玩性极高。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401591.jpg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="开启前后对比" data-original="https://cdn.sspai.com/editor/u_713147/15602229401591.jpg"><figcaption class="ss-image-caption">开启前后对比</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401603.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="自定义样式" data-original="https://cdn.sspai.com/editor/u_713147/15602229401603.png"><figcaption class="ss-image-caption">自定义样式</figcaption></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/darkreader/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Dark Reader。</p>
+
+<h3 id="toc_4--NaN">uBlock Origin</h3>
+
+<p>uBlock Origin 是一款极其强大的广告屏蔽和反追踪扩展，与更广为人知的 AdBlock Plus 相比，它仅默认加载匹配当前网页的规则，因此性能更强、占用资源更低。你可以直接添加由他人维护的广告屏蔽规则列表，或者通过元素拾取器准确屏蔽不想看到的部分，也可以为想要支持的网站（例：sspai.com）启用白名单，方法多样。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401615.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401615.png"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401626.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="元素拾取器" data-original="https://cdn.sspai.com/editor/u_713147/15602229401626.png"><figcaption class="ss-image-caption">元素拾取器</figcaption></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 uBlock Origin。</p>
+
+<h3 id="toc_5--NaN">哔哩哔哩助手</h3>
+
+<p>哔哩哔哩助手可能是资历最老的 B 站辅助扩展之一，时至今日，已经拥有了关注内容更新推送、画中画、视频下载、自动签到、过滤直播广告等数项涵盖全站板块的功能。此外，你还可以利用哔哩哔哩助手反查具体弹幕发送者，方便屏蔽喷子们。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401638.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401638.png"></figure>￼
+
+<p>你可以在 <a href="https://bilibili-helper.github.io/" target="_blank" rel="noopener">官网</a> 或 <a href="https://chrome.google.com/webstore/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9%E5%B1%95/kpbnombpnpcffllnianjibmpadjolanh" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取哔哩哔哩助手。</p>
+
+<h3 id="toc_6--NaN">pakku</h3>
+
+<p>弹幕可以说是众多 B 站视频的灵魂，但有时，过于密集的弹幕刷屏也会使人心生厌烦，而 Pakku 则可以近乎完美地解决这一问题。启用后，它便会将短时间内集中出现的相似弹幕自动合并为一条，并在后方注明出现次数。在不遮挡画面主要内容的同时，达到欣赏优质弹幕的目的。你还可以调整弹幕合并样式、相似度算法等，或者用正则表达式预先过滤弹幕，自由度较高。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401650.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401650.png"></figure>￼
+
+<p>你可以在 <a href="https://s.xmcp.ml/pakkujs/" target="_blank" rel="noopener">官网</a>、<a href="https://chrome.google.com/webstore/detail/jklfcpboamajpiikgkbjcnnnnooefbhh" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/pakkujs/?src=external-home" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 pakku。</p>
+
+<h3 id="toc_7--NaN">Simplify Gmail</h3>
+
+<p>为了完成 KPI，Google 大刀部把广受欢迎的 Inbox 砍掉了，如果你曾是其忠实用户，可能会对陈旧的 Gmail 界面感到不适应。为了拯救你的收件箱，前 Inbox 设计师 Michael Leggett 开发了 Simplify Gmail 扩展，重新设计了按钮和元素的摆放位置，并隐藏了侧边栏，让界面更加清爽干净。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401665.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401665.gif"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/simplify-gmail/pbmlfaiicoikhdbjagjbglnbfcbcojpj" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Simplify Gmail。</p>
+
+<h3 id="toc_8--NaN">Augmented Steam</h3>
+
+<p>一入蒸汽深似海，从此钱包是路人。看着满屏的 -90%，唯有 Augmented Steam 能阻止剁手的冲动。它可以帮助你查看游戏的历史价格、各区售价，隐藏或高亮显示已购买游戏和愿望单项目，在商店页面显示成就、媒体打分和相关文章介绍等，是喜加一前的好帮手。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401679.png"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401693.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401693.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/dnhpnfgdlenaccegplpojghhmaamnnfp/" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/enhanced-steam-an-itad-fork/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Augmented Steam。</p>
+
+<p>P.S. Augmented Steam 基于名气更大的 Enhanced Steam 扩展，但由于后者已停止维护，故推荐此扩展。</p>
+
+<h2 id="toc_9--NaN">让功能更贴心</h2>
+
+<p>网页要颜值，更要实用。有的网站精简功能引流 App、有的网站拒不兼容最新标准、还有的网站总是加载出错……要想好好上网，本节推荐的 7 款扩展必不可少。</p>
+
+<h3 id="toc_10--NaN">Tampermonkey</h3>
+
+<p>Tampermonkey 是一款 JavaScript 脚本管理器，其与 Stylus 类似，但功能更加强大。从内容屏蔽到样式美化、从功能增强到精简提速，Tampermonkey 脚本几乎无所不能。如果你厌倦了原始网页的诸多不便，不妨试试能否从 <a href="https://greasyfork.org/zh-CN" target="_blank" rel="noopener">Greasy Fork</a> 中找到其他用户编写好的优化脚本，或者干脆自己创建一个，并分享给大家。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401708.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="已安装脚本管理" data-original="https://cdn.sspai.com/editor/u_713147/15602229401708.png"><figcaption class="ss-image-caption">已安装脚本管理</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401722.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="编辑脚本" data-original="https://cdn.sspai.com/editor/u_713147/15602229401722.png"><figcaption class="ss-image-caption" contenteditable="true">编辑脚本</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401735.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="AC-baidu 和搜索引擎跳转脚本" data-original="https://cdn.sspai.com/editor/u_713147/15602229401735.png"><figcaption class="ss-image-caption">AC-baidu 和搜索引擎跳转脚本</figcaption></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Tampermonkey。</p>
+
+<p>关联阅读：<br>
+<a href="https://sspai.com/post/40485" target="_blank" rel="noopener">用 Chrome 的人都需要知道的「神器」扩展：「油猴」使用详解</a><br>
+<a href="https://sspai.com/post/42380" target="_blank" rel="noopener">全方位强化你的浏览器，我们推荐多达 40+ 款实用的油猴脚本</a></p>
+
+<h3 id="toc_11--NaN">Infinity 新标签页</h3>
+
+<p>Infinity 也许不是最美观或最实用的新标签页扩展，但很有可能是将两者平衡最优秀的那一个。它内置了上万张风景和插画壁纸，提供 Unsplash、Bing、Life Of Pix 等壁纸源，支持自动切换、遮罩和模糊效果。为了保证 UI 的一致性，Infinity 新标签页重绘了数百个常用网站图标，可以按分类筛选和搜索。你还可以自定义图标布局、形状等，随心定制主界面的显示元素。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401753.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401753.png"></figure>￼
+
+<p>你可以在 <a href="https://cn.infinitynewtab.com/" target="_blank" rel="noopener">官网</a>、<a href="https://chrome.google.com/webstore/detail/infinity-new-tab-pro/nnnkddnnlpamobajfibfdgfnbcnkgngh" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/infinity-new-tab-pro-firefox" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Infinity 新标签页。</p>
+
+<h3 id="toc_12--NaN">二管家</h3>
+
+<p>对于装了 94 个 Chrome 扩展的我来说，如何管理调教它们是件烦心事。而二管家则允许你在一处快速管理所有已安装扩展，通过正则表达式自定义规则，在打开特定网站时自动开启或禁用一组扩展。此外，二管家还能记录所有扩展的安装、卸载等活动记录，并依据云端数据为你推荐适合当前网站的扩展。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401769.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401769.png"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401784.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401784.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取二管家。</p>
+
+<h3 id="toc_13--NaN">二箱</h3>
+
+<p>二箱与二管家来自同一位开发者，是一款整合了 Google、百度、必应、TinyEye、SauceNAO 等多个引擎的图片搜索扩展，允许你在一个页面中查看全部相关结果，并按尺寸、相关度等排序。你也可以使用二箱直接截图，或手动上传本地图片搜索，并查看此前的搜索记录。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401801.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401801.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/noobox-search-by-image/kidibbfcblfbbafhnlanccjjdehoahep" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取二箱。</p>
+
+<h3 id="toc_14--NaN">IE Tab</h3>
+
+<p>互联网的辞旧迎新速度愈发迅捷，却总有教务系统和网银页面被甩在身后。如果你不想每次登录网银都要从角落请 Internet Explorer 出山，IE Tab 就是个好选择。它可以在不离开 Chrome 的情况下调用 IE 内核浏览网页，从此告别「不兼容」对话框。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401815.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="使用前" data-original="https://cdn.sspai.com/editor/u_713147/15602229401815.png"><figcaption class="ss-image-caption">使用前</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401831.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="使用后" data-original="https://cdn.sspai.com/editor/u_713147/15602229401831.png"><figcaption class="ss-image-caption">使用后</figcaption></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd" target="_blank" rel="noopener">Chrome 网上应用店</a> 获取 IE Tab，免费版仅支持 Windows，macOS 和 Chrome OS 使用需要订阅高级版。</p>
+
+<h3 id="toc_15--NaN">Go to Tab</h3>
+
+<p>一次打开众多网页时，Chrome 就会把所有标签页都缩成一团，完全无法辨识。而 Go to Tab 则可以将当前打开的网页和窗口标题展示为列表，点击即可跳转或关闭。如果标签页实在过多，你还可以用键盘快捷键快速操作，并搜索 URL 和标题，提高浏览效率。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401844.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401844.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/go-to-tab/hjfkaobgkmaeomgdhmhhipdbjdhhjkoi" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Go to Tab。</p>
+
+<h3 id="toc_16--NaN">AHA Music</h3>
+
+<p>用浏览器观看视频时，你的注意力可能会被背景音乐所吸引。而 AHA Music 这款扩展就可以自动识别当前正在播放的音乐，并给出 Spotify、YouTube、Deezer 等流媒体服务链接。由于采用了 ACRCloud 作为曲库提供方，AHA Music 基本覆盖了所有时下流行歌曲，让你无后顾之忧。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401856.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401856.gif"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/aha-music-music-identifie/dpacanjfikmhoddligfbehkpomnbgblf" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 AHA Music。</p>
+
+<h2 id="toc_17--NaN">让工作更高效</h2>
+
+<p>在少数派写推荐文，必不可少的关键词之一就是「生产力」了。在本文中，我也不能免俗，将为大家介绍 7 款可以加速你的工作效率的 Chrome 扩展，从此告别「996」。</p>
+
+<h3 id="toc_18--NaN">Toby</h3>
+
+<p>查询资料时，我们可能会同时打开许多标签页，如果这时突然来了其它紧要工作，只有关闭所有页面下次重新搜索么？有了 Toby，你就可以一键保存当前的标签页组，随时恢复此前的进度。Toby 支持暂存多个标签页组，并通过标签、笔记和备注整理归纳，还能跨设备同步收藏记录。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401867.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401867.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/toby-for-chrome/hddnkoipeenegfoeaoibdmnaalmgkpip" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Toby。</p>
+
+<p><strong>关联阅读：</strong><a href="https://sspai.com/post/44105" target="_blank" rel="noopener">如何更好地管理「标签页」，我选择 Toby</a></p>
+
+<h3 id="toc_19--NaN">Spider</h3>
+
+<p>工作和学习中，你可能会有批量抓取网站内容的需求：商品介绍、新闻标题、表格数据……如果只是单纯的复制粘贴，之后还要费心整理，想要写个爬虫又考验编程水平。这时，不妨试试 Spider，它可以一键抓取网页上的结构化数据，并导出为 JSON 和 CSV 文件，轻松高效。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401878.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401878.gif"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/spider-a-smart-web-scrapi/hhblpocflefpmmfibmajdfcjdkeafpen" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Spider。</p>
+
+<h3 id="toc_20--NaN">Forest</h3>
+
+<p>如果你总是在工作中分心，干正事的时候鼠标却不由自主地点开了摸鱼网站，Forest 就能帮到你。只需设置网站白名单和黑名单，再点击 Forest 的图标，它就会督促你专注于眼前的工作。你可以设置专注时长和树的种类，在结束时收获绿树如荫。如果期间访问了不该上的网站，就只有枯萎的树苗了哦。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401890.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401890.png"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401905.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401905.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/forest-stay-focused-be-pr/kjacjjdnoddnpbbcjilcajfhhbdhkpgk" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Forest，应用同时提供 <a href="https://itunes.apple.com/app/forest-stay-focused-stop-phubbing/id866450515" target="_blank" rel="noopener">iOS</a> 和 <a href="https://www.coolapk.com/apk/cc.forestapp" target="_blank" rel="noopener">Android</a> 版本。</p>
+
+<p><strong>关联阅读：</strong><a href="https://sspai.com/post/42393" target="_blank" rel="noopener">你要专心工作，这棵树才能茁壮成长：Forest for Chrome | App+1</a></p>
+
+<h3 id="toc_21--NaN">WorldBrain&#39;s Memex</h3>
+
+<p>我们每天都会访问数不清的网站，却很少归纳整理。于是，当某一天你突然回想起曾经看到过什么内容时，用尽一切办法，也很难翻到当初的那个页面了。为了解决这一问题，WorldBrain&#39;s Memex 诞生了。它可以快速索引网页正文内容，而非标题和链接，还支持自然语言检索，读过哪些文章一清二楚。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401920.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401920.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/worldbrains-memex/abkfbakhjpmblaafnpgjppbmioombali" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/worldbrain/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 WorldBrain&#39;s Memex。</p>
+
+<p><strong>关联阅读：</strong><a href="https://sspai.com/post/44088" target="_blank" rel="noopener">如何在 1000 条历史记录中搜到你已经忘记标题的网页？试试这个插件：Memex</a></p>
+
+<h3 id="toc_22--NaN">达达划词翻译</h3>
+
+<p>单词翻译扩展可能是竞争压力最大的领域之一，少数派此前也曾推出过一篇 <a href="https://sspai.com/post/44139" target="_blank" rel="noopener">专题介绍</a>。而尝试过诸多作品后，我的最终选择是达达划词翻译。它的 UI 设计简约美观，释义来自牛津词典，支持发音和词根词缀。此外，达达划词翻译还内置了生词本功能，基于艾宾浩斯记忆曲线进行温习提醒，帮助你科学掌握外文词汇。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401932.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401932.gif"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401944.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401944.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/%E8%BE%BE%E8%BE%BE%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/cajhcjfcodjoalmhjekljnfkgjlkeajl" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取达达划词翻译。</p>
+
+<h3 id="toc_23--NaN">书签侧边栏</h3>
+
+<p>为了追求更大的有效显示面积，不少人会选择隐藏 Chrome 书签栏，但这也会带来一个新问题，那就是如何方便快捷的点击书签。而书签侧边栏则可以将 Chrome 的书签栏移动至浏览器两侧，并通过滑动或点击等方式唤出，还可以自定义其外观、位置、行为等，自由度较高。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401956.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401956.png"></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401969.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401969.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/bookmark-sidebar/jdbnofccmhefkmjbkkdkfiicjkgofkdh" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取书签侧边栏。</p>
+
+<h3 id="toc_24--NaN">Unpaywall</h3>
+
+<p>尽管科学无国界，但部分知识却有壁垒。如果你需要参考一篇期刊论文，学校却没有购买相关授权，或许会看到下图所示的提示，只能另觅他处或自掏腰包了。其实，有相当一部分付费论文都可以从互联网免费获取，Unpaywall 就可以帮助我们找到它。启用后，Unpaywall 会在论文网页提示是否有免费版本，可以一键直达。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401981.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401981.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/unpaywall/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Unpaywall。</p>
+
+<p>P.S. 与 Sci-Hub 不同，Unpaywall 由一家名为 Impactstroy 的非盈利机构出品，检索到的论文均来自正规合法渠道，如 Green Open Access 和作者个人网站等，请放心食用。</p>
+
+<h2 id="toc_25--NaN">让代码更直观</h2>
+
+<p>要想代码没 bug，除了祭祖女装 996 外，好看实用的浏览器扩展也能增分不少。在本节，我就为大家推荐 4 款程序员必备的 Chrome 扩展，希望能帮助你码途一路顺风。</p>
+
+<h3 id="toc_26--NaN">GayHub</h3>
+
+<p>作为全球最大的同性交友平台，GitHub 是不少程序员的工作必备网站，而 GayHub 就能让它更好用。它解决了 GitHub 浏览项目时的几个痛点，如在项目左侧显示文件目录树方便跳转、在右侧为 Markdown 说明文件添加 ToC 目录以供查看等。此外，你还可以用它全屏查看图片、快速复制代码，让 GitHub 更好用。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229401995.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229401995.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/gayhub/mdcffelghikdiafnfodjlgllenhlnejl" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 GayHub。</p>
+
+<h3 id="toc_27--NaN">Refined GitHub</h3>
+
+<p>Refined GitHub 为 GitHub 带来了数个 UI 及细节改进，如将 issues 通知设为未读、一键修复 merge 冲突、pull request 前二次确认、issue 原链接跳转、显示表态者头像等。如果你觉得原生 GitHub 还有哪些不便，不妨到 <a href="https://github.com/sindresorhus/refined-github" target="_blank" rel="noopener">Refined GitHub 主页</a> 提交新请求吧。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402007.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402007.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/refined-github-/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Refined GitHub。</p>
+
+<h3 id="toc_28--NaN">OctoLinker</h3>
+
+<p>在 GitHub 上在线查看代码时，纵使你可一目十行，也难免会被某个复杂的逻辑绕晕。这时，就到了请 OctoLinker 出场的时间。它可以识别包括 Java、Python、Node.js、Haskell 等在内的数十种语言在内的代码逻辑，将 <code>include</code>、<code>require</code>、<code>import</code> 等模块加载语句转换为可点击的链接，一键跳转至引用页。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402018.jpg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402018.jpg"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/octolinker/jlmafbaeoofdegohdhinkhilhclaklkp" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/octolinker/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 OctoLinker。</p>
+
+<h3 id="toc_29--NaN">JavaScript and CSS Code Beautifier</h3>
+
+<p>顾名思义，JavaScript and CSS Code Beautifier 是一款可以美化网页 JS 、CSS 及 JSON 代码文件的 Chrome 扩展。只需打开任意一个源代码页，它就会提示你是否显示格式化后的代码，并支持多种主题切换及自定义样式效果，再也不用复制到 IDE 查看了。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402030.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="美化前" data-original="https://cdn.sspai.com/editor/u_713147/15602229402030.png"><figcaption class="ss-image-caption">美化前</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402043.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="美化后" data-original="https://cdn.sspai.com/editor/u_713147/15602229402043.png"><figcaption class="ss-image-caption">美化后</figcaption></figure>￼
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402056.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402056.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/javascript-and-css-code-b/iiglodndmmefofehaibmaignglbpdald" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 JavaScript and CSS Code Beautifier。</p>
+
+<h2 id="toc_30--NaN">让设计更简单</h2>
+
+<p>如果你靠设计混饭吃，在日常工作中可能会遇到这些问题：想下载当前页面中的全部图片又懒得依次点击、看到一组不错的配色想保存又不知具体色值、觉得网页用的字体超赞却难觅具体名称……而本节介绍的 6 款扩展就能满足你的需求。</p>
+
+<h3 id="toc_31--NaN">图片助手</h3>
+
+<p>在 Dribbble、Pinterest、花瓣等网站看到一组设计素材时，你可能会想要将其保存至本地备用，而图片助手则可以帮助你将其一网打尽。它能够一键提取当前页面中的所有图片，允许你按尺寸、类型、URL 等筛选，还支持一次提取多个网页中的图片、加载当前页面中的链接以获取更多图片。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402071.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402071.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/imageassistant-batch-imag/dbjbempljhcmhlfpfacalomonjpalpko" target="_blank" rel="noopener">Chrome 网上应用店</a>、<a href="https://addons.mozilla.org/zh-CN/firefox/addon/ia-batch-image-downloader/" target="_blank" rel="noopener">Firefox Add-ons</a> 和 <a href="http://www.pullywood.com/ImageAssistant/" target="_blank" rel="noopener">官网</a> 免费获取图片助手。</p>
+
+<p>P.S. 如果你曾搜索过 Chrome 图片批量下载扩展，可能会看到不少推荐 Fatkun 的文章。它此前很长一段时间也是我的首选，但在一次更新后出现了静默弹窗、劫持搜索引擎、后台访问推广网页等行为，建议大家移除。</p>
+
+<h3 id="toc_32--NaN">Color by Fardos</h3>
+
+<p>无论是平面设计还是幻灯片演示，一套优秀的色彩方案都可以起到锦上添花的作用，而 Color by Fardos 就可以承包从取色到配色的全部流程。安装扩展后，只需输入名称，你就能找到相关颜色及其互补色、三色调等方案。你还可以点击屏幕上的任意颜色，实时预览调色效果，并保存至调色盘备用。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402085.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402085.gif"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/color-by-fardos/iibpgpkhpfggipbacjfeijkloidhmiei" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 Color by Fardos。</p>
+
+<h3 id="toc_33--NaN">Site Palette</h3>
+
+<p>偶遇一个设计精美的网站，想将其配色方案应用至自己的作品，Site Palette 就能帮上忙。它可以智能分析任意网页的主色调和配色方案，生成调色板，并按照 Material Design 等设计语言给出近似的颜色方案，方便后续设计工作。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402098.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402098.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/site-palette/pekhihjiehdafocefoimckjpbkegknoh" target="_blank" rel="noopener">Chrome 网上应用店</a> 获取 Site Palette，其专业版支持通过终端调用 API，但需按请求次数付费。</p>
+
+<h3 id="toc_34--NaN">Dribbble Color Generator</h3>
+
+<p>Dribbble 是世界著名的设计师交流网站，可以从上面发掘出许多优秀作品。而 Dribbble Color Generator 则可以帮助你下载任意作品的调色板，并保存为 .aco 或 .sketchpalette 文件，让你从此不再为配色担忧。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402110.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402110.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/dribbble-color-generator/cineoljoghlkpmnpcjcmbbpedgjbmpac" target="_blank" rel="noopener">Chrome 网上应用店</a> 和 <a href="https://addons.mozilla.org/en-US/firefox/addon/dribbble-color-generator/" target="_blank" rel="noopener">Firefox Add-ons</a> 免费获取 Dribble Color Generator。</p>
+
+<h3 id="toc_35--NaN">Eagle</h3>
+
+<p>Eagle 是一款集实用与美观于一体的设计素材管理工具，少数派此前也曾多次介绍过。而其官方 Chrome 扩展则允许你一键批量导入当前网页中的图片，或者直接截图保存。其抓取能力十分强大，支持按尺寸、格式等筛选，并自动识别重复图片，是设计师的好帮手。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402122.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402122.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/eagle/lieogkinebikhdchceieedcigeafdkid" target="_blank" rel="noopener">Chrome 网上应用店</a>、<a href="https://addons.mozilla.org/zh-CN/firefox/addon/eagle-app/" target="_blank" rel="noopener">Firefox Add-ons</a> 和 <a href="https://cn.eagle.cool/extensions" target="_blank" rel="noopener">官网</a> 获取 Eagle 浏览器扩展，需要配合主应用才能使用，欢迎前往 <a href="https://sspai.com/item/19" target="_blank" rel="noopener">少数派正版软件商城</a> 选购。</p>
+
+<p><strong>关联阅读：</strong><br>
+<a href="https://sspai.com/post/53224" target="_blank" rel="noopener">Eagle 1.9 更新：新增字体管理、以图搜图等，发现素材管理的更多可能</a><br>
+<a href="https://sspai.com/post/46131" target="_blank" rel="noopener">保持热情与创新，他开发出了这款图片管理工具中的「印象笔记」：专访 Eagle | 幕后</a></p>
+
+<h3 id="toc_36--NaN">WhatFont</h3>
+
+<p>在网页上看到了好看的字体，怎么才能应用到自己的作品中？此前，我一直是右键「审查元素」，再细细搜寻，效率低下。而 WhatFont 则允许我们通过一次点击查看对应文本采用的字体、字重、字号、颜色等，还能预览字体样式和跳转至字体来源出处，让海报设计更容易。</p>
+
+<figure tabindex="0" class="ss-img-wrapper"><img src="https://cdn.sspai.com/editor/u_713147/15602229402134.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt data-original="https://cdn.sspai.com/editor/u_713147/15602229402134.png"></figure>￼
+
+<p>你可以在 <a href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm" target="_blank" rel="noopener">Chrome 网上应用店</a> 免费获取 WhatFont。</p>
+</div>
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/16/如何读懂代码/" title="如何读懂代码">
+                    <div class="prevTitle">如何读懂代码</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "KsMxA7Xv4XNPE1fE1XzC6Wu1-gzGzoHsz",
+        appKey: "kE7Tjawef19blReL27CzcvEq",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ylu971211@gmail.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Eliasliangyu" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ss-H2-1560310385817"><span class="toc-number">1.</span> <span class="toc-text">让网页焕新颜</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ss-H3-1560310388077"><span class="toc-number">1.1.</span> <span class="toc-text">Stylus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ss-H3-1560310392539"><span class="toc-number">1.2.</span> <span class="toc-text">简悦</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_3--NaN"><span class="toc-number">1.3.</span> <span class="toc-text">Dark Reader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_4--NaN"><span class="toc-number">1.4.</span> <span class="toc-text">uBlock Origin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_5--NaN"><span class="toc-number">1.5.</span> <span class="toc-text">哔哩哔哩助手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_6--NaN"><span class="toc-number">1.6.</span> <span class="toc-text">pakku</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_7--NaN"><span class="toc-number">1.7.</span> <span class="toc-text">Simplify Gmail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_8--NaN"><span class="toc-number">1.8.</span> <span class="toc-text">Augmented Steam</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toc_9--NaN"><span class="toc-number">2.</span> <span class="toc-text">让功能更贴心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_10--NaN"><span class="toc-number">2.1.</span> <span class="toc-text">Tampermonkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_11--NaN"><span class="toc-number">2.2.</span> <span class="toc-text">Infinity 新标签页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_12--NaN"><span class="toc-number">2.3.</span> <span class="toc-text">二管家</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_13--NaN"><span class="toc-number">2.4.</span> <span class="toc-text">二箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_14--NaN"><span class="toc-number">2.5.</span> <span class="toc-text">IE Tab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_15--NaN"><span class="toc-number">2.6.</span> <span class="toc-text">Go to Tab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_16--NaN"><span class="toc-number">2.7.</span> <span class="toc-text">AHA Music</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toc_17--NaN"><span class="toc-number">3.</span> <span class="toc-text">让工作更高效</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_18--NaN"><span class="toc-number">3.1.</span> <span class="toc-text">Toby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_19--NaN"><span class="toc-number">3.2.</span> <span class="toc-text">Spider</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_20--NaN"><span class="toc-number">3.3.</span> <span class="toc-text">Forest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_21--NaN"><span class="toc-number">3.4.</span> <span class="toc-text">WorldBrain&#39;s Memex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_22--NaN"><span class="toc-number">3.5.</span> <span class="toc-text">达达划词翻译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_23--NaN"><span class="toc-number">3.6.</span> <span class="toc-text">书签侧边栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_24--NaN"><span class="toc-number">3.7.</span> <span class="toc-text">Unpaywall</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toc_25--NaN"><span class="toc-number">4.</span> <span class="toc-text">让代码更直观</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_26--NaN"><span class="toc-number">4.1.</span> <span class="toc-text">GayHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_27--NaN"><span class="toc-number">4.2.</span> <span class="toc-text">Refined GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_28--NaN"><span class="toc-number">4.3.</span> <span class="toc-text">OctoLinker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_29--NaN"><span class="toc-number">4.4.</span> <span class="toc-text">JavaScript and CSS Code Beautifier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toc_30--NaN"><span class="toc-number">5.</span> <span class="toc-text">让设计更简单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_31--NaN"><span class="toc-number">5.1.</span> <span class="toc-text">图片助手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_32--NaN"><span class="toc-number">5.2.</span> <span class="toc-text">Color by Fardos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_33--NaN"><span class="toc-number">5.3.</span> <span class="toc-text">Site Palette</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_34--NaN"><span class="toc-number">5.4.</span> <span class="toc-text">Dribbble Color Generator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_35--NaN"><span class="toc-number">5.5.</span> <span class="toc-text">Eagle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_36--NaN"><span class="toc-number">5.6.</span> <span class="toc-text">WhatFont</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 6
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href="/2019/06/19/Chrome扩展推荐/">Chrome扩展推荐</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/如何读懂代码/">如何读懂代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/给博客添加评论功能/">给博客添加评论功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/14</span><a class="archive-post-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">纪念iPhone XR刷机成砖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/iOS-13-不只有深色模式，这-15-个新功能同样值得关注/">iOS 13 不只有深色模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/如何搭建属于自己的个人博客/">如何搭建属于自己的个人博客</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="experience"><span class="iconfont-archer">&#xe606;</span>experience</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple ios"><span class="iconfont-archer">&#xe606;</span>Apple ios</span>
+    
+        <span class="sidebar-tag-name" data-tags="Course"><span class="iconfont-archer">&#xe606;</span>Course</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: ""
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
