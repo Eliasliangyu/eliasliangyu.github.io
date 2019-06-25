@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4.4k</span>阅读时长: <span class="post-count reading-time">15 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.3k</span>阅读时长: <span class="post-count reading-time">15 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,13 +401,13 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>OpenStack既是一个社区，也是一个项目和一个开源软件，提供开放源码软件，建立公共和私有云，它提供了一个部署云的操作平台或工具集，其宗旨在于：帮助组织运行为虚拟计算或存储服务的云，为公有云、私有云，也为大云、小云提供可扩展的、灵活的云计算。<br>OpenStackd开源项目由社区维护，包括OpenStack计算（代号为Nova），OpenStack对象存储（代号为Swift），并OpenStack镜像服务（代号Glance）的集合。 OpenStack提供了一个操作平台，或工具包，用于编排云。</p>
-<p>下面列出<span style="color: #ff00ff;">Openstack的详细构架图</span></p>
-<p><span style="font-family: 'Microsoft YaHei';"><img src="https://images2015.cnblogs.com/blog/907596/201608/907596-20160803154744809-483681990.png" alt></span></p>
+        <p>OpenStack既是一个社区，也是一个项目和一个开源软件，提供开放源码软件，建立公共和私有云，它提供了一个部署云的操作平台或工具集，其宗旨在于：帮助组织运行为虚拟计算或存储服务的云，为公有云、私有云，也为大云、小云提供可扩展的、灵活的云计算。<br data-filtered="filtered">OpenStackd开源项目由社区维护，包括OpenStack计算（代号为Nova），OpenStack对象存储（代号为Swift），并OpenStack镜像服务（代号Glance）的集合。 OpenStack提供了一个操作平台，或工具包，用于编排云。</p>
+<p>下面列出Openstack的详细构架图</p>
+<p><img src="https://images2015.cnblogs.com/blog/907596/201608/907596-20160803154744809-483681990.png" alt></p>
 <p>Openstack的网络拓扑结构图</p>
 <p><img src="https://images2015.cnblogs.com/blog/907596/201608/907596-20160803154957606-291369411.png" alt></p>
-<p>整个OpenStack是由控制节点，计算节点，网络节点，存储节点四大部分组成。（这四个节点也可以安装在一台机器上，单机部署）<br>其中：<br><span style="color: #0000ff; background-color: #ffffff;">控制节点</span>负责对其余节点的控制，包含虚拟机建立，迁移，网络分配，存储分配等等<br><span style="color: #0000ff;">计算节点</span>负责虚拟机运行<br><span style="color: #0000ff;">网络节点</span>负责对外网络与内网络之间的通信<br><span style="color: #0000ff;">存储节点</span>负责对虚拟机的额外存储管理等等</p>
-<p><span style="color: #993300;"><strong>控制节点架构：</strong></span></p>
+<p>整个OpenStack是由控制节点，计算节点，网络节点，存储节点四大部分组成。（这四个节点也可以安装在一台机器上，单机部署）<br data-filtered="filtered">其中：<br data-filtered="filtered">控制节点负责对其余节点的控制，包含虚拟机建立，迁移，网络分配，存储分配等等<br data-filtered="filtered">计算节点负责虚拟机运行<br data-filtered="filtered">网络节点负责对外网络与内网络之间的通信<br data-filtered="filtered">存储节点负责对虚拟机的额外存储管理等等</p>
+<h1>控制节点架构：</h1>
 <p>控制节点包括以下服务</p>
 <p>&nbsp; &nbsp;管理支持服务</p>
 <p>&nbsp; &nbsp;基础管理服务</p>
@@ -428,14 +428,14 @@ height:50vh;
 <p>Heat：提供了基于模板来实现云环境中资源的初始化，依赖关系处理，部署等基本操作，也可以解决自动收缩,负载均衡等高级特性。</p>
 <p>Centimeter：提供对物理资源以及虚拟资源的监控，并记录这些数据，对该数据进行分析，在一定条件下触发相应动作</p>
 <p>控制节点一般来说只需要一个网络端口用于通信/管理各个节点</p>
-<p><span style="color: #993300;"><strong>网络节点架构</strong></span></p>
+<h1>网络节点架构</h1>
 <p>网络节点仅包含Neutron服务</p>
 <p>Neutron：负责管理私有网段与公有网段的通信，以及管理虚拟机网络之间的通信/拓扑，管理虚拟机之上的防火等等</p>
 <p>网络节点包含三个网络端口</p>
 <p>eth0：用于与控制节点进行通信</p>
 <p>eth1：用于与除了控制节点之外的计算/存储节点之间的通信</p>
 <p>eth2：用于外部的虚拟机与相应网络之间的通信</p>
-<p><span style="color: #993300;"><strong>计算节点架构</strong></span></p>
+<h1>计算节点架构</h1>
 <p>计算节点包含Nova，Neutron，Telemeter三个服务</p>
 <p>&nbsp; 1）基础服务</p>
 <p>Nova：提供虚拟机的创建，运行，迁移，快照等各种围绕虚拟机的服务，并提供API与控制节点对接，由控制节点下发任务</p>
@@ -445,61 +445,61 @@ height:50vh;
 <p>计算节点包含最少两个网络端口</p>
 <p>eth0：与控制节点进行通信，受控制节点统一调配</p>
 <p>eth1：与网络节点，存储节点进行通信</p>
-<p><span style="color: #993300;"><strong>存储节点架构</strong></span></p>
+<h1>存储节点架构</h1>
 <p>存储节点包含Cinder，Swift等服务</p>
 <p>Cinder：块存储服务，提供相应的块存储，简单来说，就是虚拟出一块磁盘，可以挂载到相应的虚拟机之上，不受文件系统等因素影响，对虚拟机来说，这个操作就像是新加了一块硬盘，可以完成对磁盘的任何操作，包括挂载，卸载，格式化，转换文件系统等等操作，大多应用于虚拟机空间不足的情况下的空间扩容等等</p>
 <p>Swift：对象存储服务，提供相应的对象存储，简单来说，就是虚拟出一块磁盘空间，可以在这个空间当中存放文件，也仅仅只能存放文件，不能进行格式化，转换文件系统，大多应用于云磁盘/文件</p>
 <p>存储节点包含最少两个网络接口</p>
 <p>eth0：与控制节点进行通信，接受控制节点任务，受控制节点统一调配</p>
 <p>eth1：与计算/网络节点进行通信，完成控制节点下发的各类任务</p>
-<p><span style="background-color: #ffff99;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
-<p><span style="color: #ff00ff; font-size: 18px;"><strong>下面说一说Openstack的各个组件作用及关系</strong></span></p>
-<p><span style="color: #0000ff;"><strong>Openstack发展至今，总共集成了下面几个组件：</strong></span></p>
-<p><span style="color: #ff6600;"><strong>Nova - 计算服务</strong></span><br><span style="color: #ff6600;"><strong>Neutron-网络服务</strong></span><br><span style="color: #ff6600;"><strong>Swift - 对象存储服务</strong></span><br><span style="color: #ff6600;"><strong>Cinder-块存储服务</strong></span><br><span style="color: #ff6600;"><strong>Glance - 镜像服务</strong></span><br><span style="color: #ff6600;"><strong>Keystone - 认证服务</strong></span><br><span style="color: #ff6600;"><strong>Horizon - UI服务</strong></span><br><span style="color: #ff6600;"><strong>Ceilometer-监控服务</strong></span><br><span style="color: #ff6600;"><strong>Heat-集群服务</strong></span><br><span style="color: #ff6600;"><strong>Trove-数据库服务</strong></span></p>
+<p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p><strong>下面说一说Openstack的各个组件作用及关系</strong></p>
+<p><strong>Openstack发展至今，总共集成了下面几个组件：</strong></p>
+<p><strong>Nova - 计算服务</strong><br data-filtered="filtered"><strong>Neutron-网络服务</strong><br data-filtered="filtered"><strong>Swift - 对象存储服务</strong><br data-filtered="filtered"><strong>Cinder-块存储服务</strong><br data-filtered="filtered"><strong>Glance - 镜像服务</strong><br data-filtered="filtered"><strong>Keystone - 认证服务</strong><br data-filtered="filtered"><strong>Horizon - UI服务</strong><br data-filtered="filtered"><strong>Ceilometer-监控服务</strong><br data-filtered="filtered"><strong>Heat-集群服务</strong><br data-filtered="filtered"><strong>Trove-数据库服务</strong></p>
 <p>组件间的关系图如下：</p>
 <p><img src="https://images2015.cnblogs.com/blog/907596/201608/907596-20160803161818153-400482667.png" alt></p>
-<p><span style="font-size: 18pt; background-color: #ffff00;"><strong>重要组件介绍</strong></span></p>
-<p><span style="color: #339966; font-size: 14pt;"><strong>OpenStack认证服务（Keystone）</strong></span><br>Keystone为所有的OpenStack组件提供认证和访问策略服务，它依赖自身REST（基于Identity API）系统进行工作，主要对（但不限于）Swift、Glance、Nova等进行认证与授权。事实上，授权通过对动作消息来源者请求的合法性进行鉴定。下图显示了身份认证服务流程：</p>
+<h1>重要组件介绍</h1>
+<h2><strong>OpenStack认证服务（Keystone）</strong></h2><br data-filtered="filtered">Keystone为所有的OpenStack组件提供认证和访问策略服务，它依赖自身REST（基于Identity API）系统进行工作，主要对（但不限于）Swift、Glance、Nova等进行认证与授权。事实上，授权通过对动作消息来源者请求的合法性进行鉴定。下图显示了身份认证服务流程：<p></p>
 <p><img src="https://images2015.cnblogs.com/blog/907596/201608/907596-20160803162042356-1138315067.png" alt></p>
 <p>&nbsp;</p>
-<p>Keystone采用两种授权方式，一种基于<span style="color: #ff0000;"><strong>用户名/密码</strong></span>，另一种<span style="color: #ff0000;"><strong>基于令牌（Token）</strong></span>。</p>
-<p>除此之外，Keystone提供以下三种服务：<br>&nbsp; &nbsp; 令牌服务：含有授权用户的授权信息<br>&nbsp; &nbsp; 目录服务：含有用户合法操作的可用服务列表<br>&nbsp; &nbsp; 策略服务：利用Keystone具体指定用户或群组某些访问权限</p>
-<p><strong>keystone认证服务注意点：</strong></p>
+<p>Keystone采用两种授权方式，一种基于<strong>用户名/密码</strong>，另一种<strong>基于令牌（Token）</strong>。</p>
+<p>除此之外，Keystone提供以下三种服务：<br data-filtered="filtered">&nbsp; &nbsp; 令牌服务：含有授权用户的授权信息<br data-filtered="filtered">&nbsp; &nbsp; 目录服务：含有用户合法操作的可用服务列表<br data-filtered="filtered">&nbsp; &nbsp; 策略服务：利用Keystone具体指定用户或群组某些访问权限</p>
+<h2>keystone认证服务注意点：</h2>
 <p>服务入口：如Nova、Swift和Glance一样每个OpenStack服务都拥有一个指定的端口和专属的URL，我们称其为入口（endpoints）。</p>
 <p>区位：在某个数据中心，一个区位具体指定了一处物理位置。在典型的云架构中，如果不是所有的服务都访问分布式数据中心或服务器的话，则也称其为区位。</p>
-<p>用户：Keystone授权使用者<br>　　PS：代表一个个体，OpenStack以用户的形式来授权服务给它们。用户拥有证书（credentials），且可能分配给一个或多个租户。经过验证后，会为每个单独的租户提供一个特定的令牌。</p>
+<p>用户：Keystone授权使用者<br data-filtered="filtered">　　PS：代表一个个体，OpenStack以用户的形式来授权服务给它们。用户拥有证书（credentials），且可能分配给一个或多个租户。经过验证后，会为每个单独的租户提供一个特定的令牌。</p>
 <p>服务：总体而言，任何通过Keystone进行连接或管理的组件都被称为服务。举个例子，我们可以称Glance为Keystone的服务。</p>
-<p>角色：为了维护安全限定，就云内特定用户可执行的操作而言，该用户关联的角色是非常重要的。<br>　　PS：一个角色是应用于某个租户的使用权限集合，以允许某个指定用户访问或使用特定操作。角色是使用权限的逻辑分组，它使得通用的权限可以简单地分组并绑定到与某个指定租户相关的用户。</p>
-<p>租间：租间指的是具有全部服务入口并配有特定成员角色的一个项目。<br>　　PS：一个租间映射到一个Nova的&ldquo;project-id&rdquo;，在对象存储中，一个租间可以有多个容器。根据不同的安装方式，一个租间可以代表一个客户、帐号、组织或项目。</p>
-<p><strong style="color: #008000; font-size: 14pt; line-height: 1.5;">OpenStack计算设施----Nova</strong></p>
+<p>角色：为了维护安全限定，就云内特定用户可执行的操作而言，该用户关联的角色是非常重要的。<br data-filtered="filtered">　　PS：一个角色是应用于某个租户的使用权限集合，以允许某个指定用户访问或使用特定操作。角色是使用权限的逻辑分组，它使得通用的权限可以简单地分组并绑定到与某个指定租户相关的用户。</p>
+<p>租间：租间指的是具有全部服务入口并配有特定成员角色的一个项目。<br data-filtered="filtered">　　PS：一个租间映射到一个Nova的&ldquo;project-id&rdquo;，在对象存储中，一个租间可以有多个容器。根据不同的安装方式，一个租间可以代表一个客户、帐号、组织或项目。</p>
+<h2>OpenStack计算设施----Nova</h2>
 <p>Nova是OpenStack计算的弹性控制器。OpenStack云实例生命期所需的各种动作都将由Nova进行处理和支撑，这就意味着Nova以管理平台的身份登场，负责管理整个云的计算资源、网络、授权及测度。虽然Nova本身并不提供任何虚拟能力，但是它将使用libvirt API与虚拟机的宿主机进行交互。Nova通过Web服务API来对外提供处理接口，而且这些接口与Amazon的Web服务接口是兼容的。</p>
-<p>功能及特点：　<br>  实例生命周期管理<br>  计算资源管理<br>  网络与授权管理<br>  基于REST的API<br>  异步连续通信<br>  支持各种宿主：Xen、XenServer/XCP、KVM、UML、VMware vSphere及Hyper-V</p>
-<p>Nova弹性云（OpenStack计算部件）包含以下主要部分：<br>  API Server（nova-api）<br>  消息队列（rabbit-mq server）<br>  运算工作站（nova-compute）<br>  网络控制器（nova-network）<br>  卷管理（nova-volume）<br>  调度器（nova-scheduler）</p>
-<p>  解释如下：<br>  1）API服务器（nova-api）<br>API服务器提供了云设施与外界交互的接口，它是外界用户对云实施管理的唯一通道。通过使用web服务来调用各种EC2的API，接着API服务器便通过消息队列把请求送达至云内目标设施进行处理。作为对EC2-api的替代，用户也可以使用OpenStack的原生API，我们把它叫做&ldquo;OpenStack API&rdquo;。</p>
-<p>  2）消息队列（Rabbit MQ Server）<br>OpenStack内部在遵循AMQP（高级消息队列协议）的基础上采用消息队列进行通信。Nova对请求应答进行异步调用，当请求接收后便则立即触发一个回调。由于使用了异步通信，不会有用户的动作被长置于等待状态。例如，启动一个实例或上传一份镜像的过程较为耗时，API调用就将等待返回结果而不影响其它操作，在此异步通信起到了很大作用，使整个系统变得更加高效。</p>
+<p>功能及特点：　<br data-filtered="filtered">实例生命周期管理<br data-filtered="filtered">计算资源管理<br data-filtered="filtered">网络与授权管理<br data-filtered="filtered">基于REST的API<br data-filtered="filtered">异步连续通信<br data-filtered="filtered">支持各种宿主：Xen、XenServer/XCP、KVM、UML、VMware vSphere及Hyper-V</p>
+<p>Nova弹性云（OpenStack计算部件）包含以下主要部分：<br data-filtered="filtered">API Server（nova-api）<br data-filtered="filtered">消息队列（rabbit-mq server）<br data-filtered="filtered">运算工作站（nova-compute）<br data-filtered="filtered">网络控制器（nova-network）<br data-filtered="filtered">卷管理（nova-volume）<br data-filtered="filtered">调度器（nova-scheduler）</p>
+<p>解释如下：<br data-filtered="filtered">1）API服务器（nova-api）<br data-filtered="filtered">API服务器提供了云设施与外界交互的接口，它是外界用户对云实施管理的唯一通道。通过使用web服务来调用各种EC2的API，接着API服务器便通过消息队列把请求送达至云内目标设施进行处理。作为对EC2-api的替代，用户也可以使用OpenStack的原生API，我们把它叫做&ldquo;OpenStack API&rdquo;。</p>
+<p>2）消息队列（Rabbit MQ Server）<br data-filtered="filtered">OpenStack内部在遵循AMQP（高级消息队列协议）的基础上采用消息队列进行通信。Nova对请求应答进行异步调用，当请求接收后便则立即触发一个回调。由于使用了异步通信，不会有用户的动作被长置于等待状态。例如，启动一个实例或上传一份镜像的过程较为耗时，API调用就将等待返回结果而不影响其它操作，在此异步通信起到了很大作用，使整个系统变得更加高效。</p>
 <p>　3）调度器（nova-scheduler）　　</p>
 <p>调度器负责把nova-API调用送达给目标。调度器以名为&ldquo;nova-schedule&rdquo;的守护进程方式运行，并根据调度算法从可用资源池中恰当地选择运算服务器。有很多因素都可以影响调度结果，比如负载、内存、子节点的远近、CPU架构等等。强大的是nova调度器采用的是可插入式架构。</p>
-<p>目前nova调度器使用了几种基本的调度算法：<br>　　随机化：主机随机选择可用节点；<br>　　可用化：与随机相似，只是随机选择的范围被指定；<br>　　简单化：应用这种方式，主机选择负载最小者来运行实例。负载数据可以从别处获得，如负载均衡服务器。</p>
-<p>  4）运算工作站（nova-compute）<br>运算工作站的主要任务是管理实例的整个生命周期。他们通过消息队列接收请求并执行，从而对实例进行各种操作。在典型实际生产环境下，会架设许多运算工作站，根据调度算法，一个实例可以在可用的任意一台运算工作站上部署。</p>
-<p>　5）网络控制器（nova-network）<br>网络控制器处理主机的网络配置，例如IP地址分配，配置项目VLAN，设定安全群组以及为计算节点配置网络。</p>
-<p>　6）卷工作站（nova-volume）　<br>卷工作站管理基于LVM的 实例卷，它能够为一个实例创建、删除、附加卷，也可以从一个实例中分离卷。卷管理为何如此重要？因为它提供了一种保持实例持续存储的手段，比如当结束一个 实例后，根分区如果是非持续化的，那么对其的任何改变都将丢失。可是，如果从一个实例中将卷分离出来，或者为这个实例附加上卷的话，即使实例被关闭，数据 仍然保存其中。这些数据可以通过将卷附加到原实例或其他实例的方式而重新访问。</p>
+<p>目前nova调度器使用了几种基本的调度算法：<br data-filtered="filtered">　　随机化：主机随机选择可用节点；<br data-filtered="filtered">　　可用化：与随机相似，只是随机选择的范围被指定；<br data-filtered="filtered">　　简单化：应用这种方式，主机选择负载最小者来运行实例。负载数据可以从别处获得，如负载均衡服务器。</p>
+<p>4）运算工作站（nova-compute）<br data-filtered="filtered">运算工作站的主要任务是管理实例的整个生命周期。他们通过消息队列接收请求并执行，从而对实例进行各种操作。在典型实际生产环境下，会架设许多运算工作站，根据调度算法，一个实例可以在可用的任意一台运算工作站上部署。</p>
+<p>　5）网络控制器（nova-network）<br data-filtered="filtered">网络控制器处理主机的网络配置，例如IP地址分配，配置项目VLAN，设定安全群组以及为计算节点配置网络。</p>
+<p>　6）卷工作站（nova-volume）　<br data-filtered="filtered">卷工作站管理基于LVM的 实例卷，它能够为一个实例创建、删除、附加卷，也可以从一个实例中分离卷。卷管理为何如此重要？因为它提供了一种保持实例持续存储的手段，比如当结束一个 实例后，根分区如果是非持续化的，那么对其的任何改变都将丢失。可是，如果从一个实例中将卷分离出来，或者为这个实例附加上卷的话，即使实例被关闭，数据 仍然保存其中。这些数据可以通过将卷附加到原实例或其他实例的方式而重新访问。</p>
 <p>因此，为了日后访问，重要数据务必要写入卷中。这种应用对于数据服务器实例的存储而言，尤为重要。</p>
-<p><strong style="color: #008000; line-height: 1.5;"><span style="font-size: 14pt;">OpenStack镜像服务器----Glance</span></strong></p>
-<p>OpenStack镜像服务器是一套虚拟机镜像发现、注册、检索系统，我们可以将镜像存储到以下任意一种存储中：<br>  本地文件系统（默认）<br>  S3直接存储<br>  S3对象存储（作为S3访问的中间渠道）<br>  OpenStack对象存储等等。<br>　　<br>功能及特点：<br>   提供镜像相关服务。</p>
-<p>Glance构件：<br>  1）Glance-API：<br>　   主要负责接收响应镜像管理命令的Restful请求，分析消息请求信息并分发其所带的命令（如新增，删除，更新等）。默认绑定端口是9292。<br>  2）Glance-Registry：<br>　　主要负责接收响应镜像元数据命令的Restful请求。分析消息请求信息并分发其所带的命令（如获取元数据，更新元数据等）。默认绑定的端口是9191。</p>
-<p><strong style="color: #008000; line-height: 1.5;"><span style="font-size: 14pt;">OpenStack存储设施----Swift</span></strong></p>
+<h2>OpenStack镜像服务器----Glance</h2>
+<p>OpenStack镜像服务器是一套虚拟机镜像发现、注册、检索系统，我们可以将镜像存储到以下任意一种存储中：<br data-filtered="filtered">本地文件系统（默认）<br data-filtered="filtered">S3直接存储<br data-filtered="filtered">S3对象存储（作为S3访问的中间渠道）<br data-filtered="filtered">OpenStack对象存储等等。<br data-filtered="filtered">　　<br data-filtered="filtered">功能及特点：<br data-filtered="filtered">提供镜像相关服务。</p>
+<p>Glance构件：<br data-filtered="filtered">1）Glance-API：<br data-filtered="filtered">　 主要负责接收响应镜像管理命令的Restful请求，分析消息请求信息并分发其所带的命令（如新增，删除，更新等）。默认绑定端口是9292。<br data-filtered="filtered">2）Glance-Registry：<br data-filtered="filtered">　　主要负责接收响应镜像元数据命令的Restful请求。分析消息请求信息并分发其所带的命令（如获取元数据，更新元数据等）。默认绑定的端口是9191。</p>
+<h2>OpenStack存储设施----Swift</h2>
 <p>Swift为OpenStack提供一种分布式、持续虚拟对象存储，它类似于Amazon Web Service的S3简单存储服务。Swift具有跨节点百级对象的存储能力。Swift内建冗余和失效备援管理，也能够处理归档和媒体流，特别是对大数据（千兆字节）和大容量（多对象数量）的测度非常高效。</p>
-<p>swift功能及特点：　　<br>  海量对象存储<br>  大文件（对象）存储<br>  数据冗余管理<br>  归档能力-----处理大数据集<br>  为虚拟机和云应用提供数据容器<br>  处理流媒体<br>  对象安全存储<br>  备份与归档<br>  良好的可伸缩性</p>
-<p>Swift组件<br>  Swift账户<br>  Swift容器<br>  Swift对象<br>  Swift代理<br>  Swift RING<br>　　<br>Swift代理服务器　　<br>用户都是通过Swift-API与代理服务器进行交互，代理服务器正是接收外界请求的门卫，它检测合法的实体位置并路由它们的请求。<br>此外，代理服务器也同时处理实体失效而转移时，故障切换的实体重复路由请求。</p>
-<p>Swift对象服务器<br>对象服务器是一种二进制存储，它负责处理本地存储中的对象数据的存储、检索和删除。对象都是文件系统中存放的典型的二进制文件，具有扩展文件属性的元数据（xattr）。</p>
+<p>swift功能及特点：　　<br data-filtered="filtered">海量对象存储<br data-filtered="filtered">大文件（对象）存储<br data-filtered="filtered">数据冗余管理<br data-filtered="filtered">归档能力-----处理大数据集<br data-filtered="filtered">为虚拟机和云应用提供数据容器<br data-filtered="filtered">处理流媒体<br data-filtered="filtered">对象安全存储<br data-filtered="filtered">备份与归档<br data-filtered="filtered">良好的可伸缩性</p>
+<p>Swift组件<br data-filtered="filtered">Swift账户<br data-filtered="filtered">Swift容器<br data-filtered="filtered">Swift对象<br data-filtered="filtered">Swift代理<br data-filtered="filtered">Swift RING<br data-filtered="filtered">　　<br data-filtered="filtered">Swift代理服务器　　<br data-filtered="filtered">用户都是通过Swift-API与代理服务器进行交互，代理服务器正是接收外界请求的门卫，它检测合法的实体位置并路由它们的请求。<br data-filtered="filtered">此外，代理服务器也同时处理实体失效而转移时，故障切换的实体重复路由请求。</p>
+<p>Swift对象服务器<br data-filtered="filtered">对象服务器是一种二进制存储，它负责处理本地存储中的对象数据的存储、检索和删除。对象都是文件系统中存放的典型的二进制文件，具有扩展文件属性的元数据（xattr）。</p>
 <p>注意：xattr格式被Linux中的ext3/4，XFS，Btrfs，JFS和ReiserFS所支持，但是并没有有效测试证明在XFS，JFS，ReiserFS，Reiser4和ZFS下也同样能运行良好。不过，XFS被认为是当前最好的选择。</p>
-<p>Swift容器服务器<br>容器服务器将列出一个容器中的所有对象，默认对象列表将存储为SQLite文件（译者注：也可以修改为MySQL，安装中就是以MySQL为例）。容器服务器也会统计容器中包含的对象数量及容器的存储空间耗费。</p>
-<p>Swift账户服务器<br>账户服务器与容器服务器类似，将列出容器中的对象。</p>
+<p>Swift容器服务器<br data-filtered="filtered">容器服务器将列出一个容器中的所有对象，默认对象列表将存储为SQLite文件（译者注：也可以修改为MySQL，安装中就是以MySQL为例）。容器服务器也会统计容器中包含的对象数量及容器的存储空间耗费。</p>
+<p>Swift账户服务器<br data-filtered="filtered">账户服务器与容器服务器类似，将列出容器中的对象。</p>
 <p>Ring（索引环）</p>
 <p>Ring容器记录着Swift中物理存储对象的位置信息，它是真实物理存储位置的实体名的虚拟映射，类似于查找及定位不同集群的实体真实物理位置的索引服务。这里所谓的实体指账户、容器、对象，它们都拥有属于自己的不同的Rings。</p>
-<p><strong style="color: #008000; line-height: 1.5;"><span style="font-size: 14pt;">OpenStack管理的Web接口----Horizon</span></strong></p>
+<h2>OpenStack管理的Web接口----Horizon</h2>
 <p>Horizon是一个用以管理、控制OpenStack服务的Web控制面板，它可以管理实例、镜像、创建密匙对，对实例添加卷、操作Swift容器等。除此之外，用户还可以在控制面板中使用终端（console）或VNC直接访问实例。</p>
-<p>总之，Horizon具有如下一些特点：　　<br>  实例管理：创建、终止实例，查看终端日志，VNC连接，添加卷等<br>  访问与安全管理：创建安全群组，管理密匙对，设置浮动IP等<br>  偏好设定：对虚拟硬件模板可以进行不同偏好设定<br>  镜像管理：编辑或删除镜像<br>  查看服务目录<br>  管理用户、配额及项目用途<br>  用户管理：创建用户等<br>  卷管理：创建卷和快照<br>  对象存储处理：创建、删除容器和对象<br>  为项目下载环境变量</p><div id="MySignature"></div>
+<p>总之，Horizon具有如下一些特点：　　<br data-filtered="filtered">实例管理：创建、终止实例，查看终端日志，VNC连接，添加卷等<br data-filtered="filtered">访问与安全管理：创建安全群组，管理密匙对，设置浮动IP等<br data-filtered="filtered">偏好设定：对虚拟硬件模板可以进行不同偏好设定<br data-filtered="filtered">镜像管理：编辑或删除镜像<br data-filtered="filtered">查看服务目录<br data-filtered="filtered">管理用户、配额及项目用途<br data-filtered="filtered">用户管理：创建用户等<br data-filtered="filtered">卷管理：创建卷和快照<br data-filtered="filtered">对象存储处理：创建、删除容器和对象<br data-filtered="filtered">为项目下载环境变量</p>
 
 
     </article>
@@ -654,7 +654,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">控制节点架构：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">网络节点架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">计算节点架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">存储节点架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">重要组件介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.1.</span> <span class="toc-text">OpenStack认证服务（Keystone）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.2.</span> <span class="toc-text">keystone认证服务注意点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.3.</span> <span class="toc-text">OpenStack计算设施----Nova</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.4.</span> <span class="toc-text">OpenStack镜像服务器----Glance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.5.</span> <span class="toc-text">OpenStack存储设施----Swift</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.6.</span> <span class="toc-text">OpenStack管理的Web接口----Horizon</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -667,6 +667,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
