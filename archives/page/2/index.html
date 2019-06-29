@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -201,10 +203,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,34 +220,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Eliasliangyu's Blog.
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                Welcome to my blog
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -359,232 +346,18 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/30/OpenStack与飞天/">
+        <a class="abstract-title" href="/2019/06/12/如何搭建属于自己的个人博客/">
             
-                <span>Opentack与飞天</span>
-        </a>
-        <div class="abstract-content">
-            今天刚结束华为云的实训课程培训，对华为云的架构原理以及系统流程也算有一点了解。
-华为的实训人员一直强调华为云的技术优越性，那么和目前国内公有云实力排名第一...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/29/SaaS-PaaS-LaaS/">
-            
-                <span>SaaS PaaS LaaS</span>
-        </a>
-        <div class="abstract-content">
-            从小型企业到全球企业，云都是一个非常热门的话题，它是一个非常广泛的概念，涵盖了很多在线领域。 无论是应用程序还是基础架构部署，当你开始考虑将项目转移到云时...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/Docker详细总结/">
-            
-                <span>Docker详细总结</span>
-        </a>
-        <div class="abstract-content">
-            Docker是什么？在计算机技术日新月异的今天， Docker 在国内发展的如火如荼，特别是在一线互联网公司， Docker 的使用是十分普遍的，甚至成为...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/三种云的区别/">
-            
-                <span>三种云的区别</span>
-        </a>
-        <div class="abstract-content">
-            公有云
-公有云通常指第三方提供商用户能够使使用的云，公有云一般可通过 Internet 使用，可能是免费或成本低廉的。这种云有许多实例，可在当今整个开放的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/OpenStack架构知识梳理/">
-            
-                <span>OpenStack架构知识梳理</span>
-        </a>
-        <div class="abstract-content">
-            OpenStack既是一个社区，也是一个项目和一个开源软件，提供开放源码软件，建立公共和私有云，它提供了一个部署云的操作平台或工具集，其宗旨在于：帮助组织...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/19/Chrome扩展推荐/">
-            
-                <span>Chrome扩展推荐</span>
+                <span>如何搭建属于自己的个人博客</span>
         </a>
         <div class="abstract-content">
             ——/转载自少数派sspai.com/——
-
-让网页焕新颜
-
-浏览器的本职工作，当然是访问网页。不过，总有一些网站的设计让我们心生不快：铺天盖地的广告、陈...
+互联网从诞生发展至今日，每天有无数的人在上面留下自己的足迹，他们用它记录生活、抒发情感、分享见解，这一切都离不...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/如何读懂代码/">
-            
-                <span>如何读懂代码</span>
-        </a>
-        <div class="abstract-content">
-            ——/转载自简书jianshu.com/——
-我们在写程序时，有不少时间都是在看别人的代码。 例如看小组的代码，看小组整合的守则，若一开始没规划怎么看， ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/给博客添加评论功能/">
-            
-                <span>给博客添加评论功能</span>
-        </a>
-        <div class="abstract-content">
-            给博客添加评论功能
-Hexo的评论系统有很多，常见的有以下几个：
-
-多说：（凉了）
-网易云跟帖：（也凉了）
-畅言： http://changyan.kua...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/12</span>
             </div>
             <!-- tags  -->
             
@@ -597,179 +370,14 @@ Hexo的评论系统有很多，常见的有以下几个：
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">
-            
-                <span>纪念iPhone XR刷机成砖</span>
-        </a>
-        <div class="abstract-content">
-            纪念iPhone XR刷机成砖
-本人于之前将iPhone XR刷成ios13尝鲜，刚上手体验并未发现明显BUG，只是系统的中英文显示有些混乱，例如提醒事项...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Apple ios">Apple ios</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/12/iOS-13-不只有深色模式/">
-            
-                <span>iOS 13 不只有深色模式</span>
-        </a>
-        <div class="abstract-content">
-            ——/转载自少数派sspai.com/——
-    按照惯例，苹果于北京时间 6 月 4 日凌晨的 WWDC 上发布了各个平台的新一代操作系统。相比去年专...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Apple ios">Apple ios</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
     </nav>
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/pika.jpg">
-    <div class="profile-name">Eliasliangyu</div>
-    
-    <div class="profile-signature">
-        Peace And Love
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:ylu971211@gmail.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Eliasliangyu" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/wechat.jpg">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
-            
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="http://www.chzu.edu.cn" target="_black">SCHOOL</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//" target="_black">PNCAS</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//" target="_black">HDPS</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

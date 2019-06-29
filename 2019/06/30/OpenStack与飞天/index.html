@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content>
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content>
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Opentack与飞天 · Eliasliangyu&#39;s blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Eliasliangyu&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Opentack与飞天</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Eliasliangyu's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Opentack与飞天
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">9.2k</span>阅读时长: <span class="post-count reading-time">31 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/30</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>今天刚结束华为云的实训课程培训，对华为云的架构原理以及系统流程也算有一点了解。
+华为的实训人员一直强调华为云的技术优越性，那么和目前国内公有云实力排名第一的阿里云相比到底有哪些优势，又在哪些地方存在差距呢，我们都知道华为云是基于开源的OpenStack框架，而阿里云则是自研的“飞天”系统，查阅了官方文档，下面就来看看这两个框架的具体情况。</p>
+
+<h1>OpenStack-华为云</h1>
+<p>在一般的表述中，直接将OpenStack称为云操作系统，把Hypervisor作为OpenStack的一部分。OpenStack网站（https://www.openstack.org/software/）上也是这么认为的：</p>
+
+<p>OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface.</p>
+
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/1.png" alt></p>
+<p>OpenStack是一个由NASA（美国国家航空航天局）和Rackspace合作研发并发起的，以Apache许可证授权的自由软件和开放源代码项目。</p>
+<p>OpenStack即指这个云操作系统，也指开发这个操作系统的开源项目。</p>
+<p>OpenStack的Open有两层意思：</p>
+<ul><li>Open Source：同其他开源软件一样，其源代码是公开的;</li></ul>
+
+<ul><li>Open Mind：思想是开放的。OpenStack以开源社区的方式向所有人开放。任何人都可以向社区贡献自己的想法和代码。OpenStack会每半年组织一场峰会（Open Summit），邀请开发者、用户、系统管理员等相关人员分享开发、使用经验。OpenStack会吸收优秀的功能和模块加入到官方发布的版本中。同安卓（Android）一样，这是一个开放的生态系统。</li></ul>
+
+<p>随着版本的演进，加入到OpenStack中的组件（又称服务）越来越多。理解OpenStack的关键是理解其核心组件。对于一个操作系统来说，管理计算、存储、网络的组件是其核心组件。另外，负责权限管理、操作界面等的组件也是核心组件。 </p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/2.png" alt></p>
+<p>如上图所示，操作系统必须有计算（Compute）组件、网络（Network）组件、磁盘管理的块存储（Block Storage）组件、将内容以类似文件方式进行存储管理的对象存储（Object Storage）组件、鉴权（Identity）组件、负责操作界面（Dashboard）的组件，甚至还有负责虚拟机快速安装恢复的备份镜像（Image）组件。</p>
+<p>OpenStack的每个组件的开发都是一个项目组，都有一个特定的名字。该名字即是项目的名称，也是组件的名称。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/3.png" alt></p>
+<p>组件之间的关系如下图所示：</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/4.png" alt></p>
+<p>要始终牢记：OpenStack的目的是为了创建和维护虚拟机（VM）。OpenStack从众多的物理主机、存储和网络设备中抓取虚拟机所需要的计算、存储和网络资源分配给虚拟机。</p>
+<h2>OpenStack各组件功能</h2>
+为了识别各组件之间的关系，先将用于业务编排的Heat组件排除，将其他组件分成支撑组件和业务组件（原创概念，纯个人理解）两个部分：
+
+<h3>第一部分：支撑组件</h3>
+
+<p>我们将不与虚拟机发生关联的组件定义为支撑组件，包括Horizon、Keystone、Ceilometer三个部分。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/5.png" alt></p>
+<p>Horizon：为几乎所有组件提供基于Web的操作界面，方便操作。OpenStack各组件只提供命令行的交互方式，Horizon提供了图形化封装的功能。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/6.png" alt></p>
+<p>Ceilometer：提供资源的计量和监控服务。云架构的设计初衷是对租户提供IT服务，所以CloudOS必须有能力计量各租户使用的计算、存储和网络资源的量，从而进行计费。所以在上图中，Ceilometer指向了计算、存储和网络组件。目前的Ceilometer组件还具备监控（告警）能力。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/7.png" alt></p>
+<p>Keystone：提供鉴权功能。OpenStack中所有需要鉴权才能继续的操作，各组件首先要与Keystone组件进行交互，进行鉴权和认证。因此，Keystone提供API（Application Programming Interface 应用编程接口）接口，与所有需要调度资源的组件进行对接。</p>
+<h3>第二部分：业务组件</h3>
+
+<p>我们将与虚拟机生命周期管理（创建、删除、修改）直接相关的组件称为业务组件，包括Nova、Neutron、Cinder、Glance、Swift五个部分。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/8.png" alt></p>
+<p>这部分组件为虚拟机提供计算、存储和网络资源。</p>
+<h4>Nova:</h4>是OpenStack的最核心组件。负责网络的Neutron和负责块存储的Cinder都是从Nova组件中分出来的，足见Nova在OpenStack中的江湖地位。Nova负责为虚拟机管理计算资源。包括CPU和内存。当接到虚拟机创建请求时，Nova根据请求中携带的计算资源需求对计算资源进行过滤，选出可用来创建虚拟机的资源，再根据一定的策略进行排序，选定某些计算资源创建虚拟机。
+
+<p>计算资源一旦分配给虚拟机，Nova不再参与到虚拟机处理上层应用的计算过程。Nova类似于抓药的老中医，只负责开方子和抓药。与开中药不同的是，计算资源不会被虚拟机“吃掉”，Nova还可以根据需要随时调整和销毁（删除）虚拟机。</p>
+<p>Nova除了负责计算资源的管理，它还是存储和网络资源的总协调。Nova接收来自管理接口的请求，再通过API接口与Cinder、Glance以及Neutron交互，协调存储、镜像以及网络资源。</p>
+<h4>Neutron:</h4>负责虚拟机的网络资源。虚拟机与外部网络互通以及隔离，需要配置IP地址、路由、VLAN等信息，即在网络上搭建一个可隔离、可交换/路由的分组数据包转发通路。Neutron根据虚拟机的需求，在相应的主机、交换机和路由器上完成支撑虚拟机转发通路的接口、VLAN、路由等配置，支撑虚拟机的数据转发。从这个角度上看，Neutron是数据转发的集中控制节点，因此也被认为是SDN（Software Defined Networking）Controller。理想的SDN Controller是Neutron努力的方向，目前OpenStack的网络部分在复杂的NFV场景下，还需要一些手工设计和配置。
+
+<h4>Cinder:</h4>Cinder负责为虚拟机提供块存储（Block Storage）资源。所谓的“块”，就是我们通常操作系统对待硬盘的状态。操作系统将磁盘划分一个一个块（簇），来对硬盘进行读写。
+
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/9.png" alt></p>
+<p>在云架构下，存储资源可能是本地资源，也可能是SAN、NFS等不同厂家不同技术的存储资源。Cinder向下对物理存储介质使用相对应的驱动（Driver）来完成硬盘的管理和读写，对VM提供统一的iSCSI存储，即统一的磁盘卷，虚拟机将Cinder统一之后的磁盘卷进行挂载使用。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/10.png" alt></p>
+<p>Glance：提供对虚拟机镜像的管理，包括虚拟机的查询、注册、上传、获取以及删除功能。比如在命令行中执行如下命令，就创建了一个suse的镜像。</p>
+<p>#glance image-create –name suse-iso –disk-format iso –container-format bare –file suse.iso</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/11.png" alt></p>
+<p>所谓镜像，就是虚拟机磁盘的复制。这个复制可能是原始二进制内容的拷贝，也可能是某种转换压缩格式之后的文件。被镜像的虚拟机磁盘中包含虚拟机的操作系统Guest OS，也可能包含已经安装完成的应用。Nova读取读取镜像内容，将镜像内容复制到虚拟机磁盘，虚拟机从磁盘引导启动镜像中的Guest OS。启动后的虚拟机就直接具备了Guest OS以及上层应用（如果镜像中有的话）功能。</p>
+<p>Glace只负责创建、删除、传递镜像信息，而镜像的保存需要借助存储组件。为Glance保存镜像的存储称为Glance的后端存储。目前NFV的设计中使用对象存储Swift来保存镜像文件。</p>
+<h4>Swift:</h4>是OpenStack的对象存储组件。在NFV的OpenStack使用中，只为Glance提供虚机镜像存储服务。Swift被称为对象存储，类似于我们看到的操作系统存储文件。被存储的对象是一个个有实际意义的数据对象，而不是二进制的原始信息。这些数据可以检索、调整，必要时进行更新。相对于单磁盘的文件存储，Swift按照云的架构进行了适配，提供了更强的扩展性、冗余和持久性。
+
+<p>复杂的实现，并不复杂的配置<br>虽然CloudOS的架构原理很复杂，但是作为集成交付工程师，并不需要掌握复杂的组件内部交互过程。交付工程师需要略微理解组件间的交互过程，将主要精力投入到功能系统和网络的设计上。</p>
+<p>技术的发展应朝着“实现越来越复杂，使用越来越简单”方向发展。自动挡汽车取代了手动挡汽车、复杂的自动变速箱简化了人的手脚配合工作之后，驾驶人应该将更多的精力投入到道路和环境上，追求更高效和舒适的驾驶。</p>
+<p>OpenStack完成虚拟机的管理。我们以虚拟机的创建为例，简单描述OpenStack各组件的作用。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/12.png" alt></p>
+<ol>
+<li><p>用户从操作管理界面（Horizon或者各厂家自己实现的界面）提交虚拟机创建请求，同时携带虚拟机的资源量需求（暂时理解为资源配置文件，具体概念以后再展开）。</p>
+</li>
+<li><p>该需求会下发给Nova组件。Nova组件首先根据虚拟机的资源需求分配计算资源。Nova检索全部计算资源，过滤掉不可用的计算资源，将剩余的计算资源进行排序，选择最优的资源。</p>
+</li>
+<li><p>Nova必须保证所创建的虚拟机有镜像资源可以使用，以便分配完全部资源之后可以使用镜像来启动虚拟机。Nova向Glance申请镜像资源。该镜像资源也是由资源配置文件指定。随后Glance启动镜像相关管理工作，查找镜像资源。如果自身目录没有对应镜像资源，Glance会去后端Swift存储请求对应的镜像资源。此时Swift类似一个文件服务器。找到对应的镜像资源后，Glance将镜像资源（就是文件）传递给Nova组件。</p>
+</li>
+<li><p>Nova随即请求网络资源。所谓网络资源，就是为虚拟机分配端口资源、配置IP地址、配置二层互通资源（VLAN、VxLAN等等）、打通三层路由。</p>
+</li>
+<li><p>通过Cinder请求存储。同Nova申请计算资源一样，Cinder也经过查找、筛选和排序过程选定存储资源，将相应磁盘参数传递给Nova组件。</p>
+<p>最后由Nova组件将计算、存储和网络资源组合，创建虚拟机。利用镜像文件引导启动虚拟机的系统。此时虚拟机就运行起来了。</p>
+</li>
+<li><p>如果上述镜像中的上层应用不完整，用户也可以在虚拟机启动之后安装自己所需的应用。</p>
+</li>
+<li><p>安装完成后，使用Glance将包含新装应用的虚拟机打包创建镜像；</p>
+</li>
+<li><p>通过Swift将新创建的镜像保存。后续如果Nova使用新的镜像启动虚拟机，新启动的虚拟机就会包含本次新装的应用，用户不必重新安装该应用。</p>
+</li>
+</ol>
+<p>当然，实际的虚拟机创建过程要更加复杂。每个组件内部还会有子进程，实现资源复杂的调度。（如下图所示）绝大部分工程师不必深入细节。</p>
+<p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/13.png" alt></p>
+<h1>飞天-阿里云</h1>
+<p>飞天是由阿里云开发的一个大规模分布式计算系统，其中包括飞天内核和飞天开放服务。</p>
+<p>飞天内核负责管理数据中心Linux集群的物理资源，控制分布式程序运行， 隐藏下层故障恢复和数据冗余等细节，有效提供弹性计算和负载均衡。如图所示，飞天体系架构主要包含四大块：
+
+</p><p><img src="//eliasliangyu.github.io/2019/06/30/OpenStack与飞天/14.png" alt></p>
+<ul><li>资源管理、安全、远程过程调用等构建分布式系统常用的底层服务;</li></ul>
+<ul><li>分布式文件系统;</li></ul>
+<ul><li>任务调度;</li></ul>
+<ul><li>集群部署和监控。</li></ul>
+<p></p>
+<p>飞天开放服务为用户应用程序提供了计算和存储两方面的接口和服务，包括弹性计算服务(Elastic ComputeService，简称ECS)、开放存储服务(Open Storage Service，简称OSS)、开放结构化数据服务(Open Table Service，简称OTS)、关系型数据库服务(Relational Database Service，简称RDS)和开放数据处理服务(Open Data Processing Service，简称ODPS)，并基于弹性计算服务提供了云服务引擎(Aliyun Cloud Engine，简称ACE)作为第三方应用开发和Web 应用运行和托管的平台。</p>
+<p>阿里云计算有限公司(简称“阿里云”)成立于2009年9月10日，致力于打造云计算的基础服务平台，注重为中小企业提供大规模、低成本、高可靠的云计算应用及服务。飞天开放平台(简称“飞天平台”或者“飞天”)是由阿里云自主研发完成的公共云计算平台，该平台所提供的服务于2011年7月28日在www.aliyun.com正式上线，推出了第一个云服务——弹性计算服务。截至本书出版时，阿里云已经推出了包括弹性计算服务、开放存储服务、关系型数据库服务、开放结构化数据服务在内的一系列服务和产品。</p>
+<p>飞天平台内核包含的模块可以分为以下几部分。</p>
+<p><strong>分布式系统底层服务：</strong>提供分布式环境下所需要的协调服务、远程过程调用、安全管理和资源管理的服务。这些底层服务为上层的分布式文件系统、任务调度等模块提供支持。<br><strong>分布式文件系统：</strong>提供一个海量的、可靠的、可扩展的数据存储服务，将集群中各个节点的存储能力聚集起来，并能够自动屏蔽软硬件故障，为用户提供不间断的数据访问服务；支持增量扩容和数据的自动平衡，提供类似于POSIX的用户空间文件访问API，支持随机读写和追加写的操作。<br><strong>任务调度：</strong>为集群系统中的任务提供调度服务，同时支持强调响应速度的在线服务(Online Service)和强调处理数据吞吐量的离线任务(Batch Processing Job)；自动检测系统中故障和热点，通过错误重试、针对长尾作业并发备份作业等方式，保证作业稳定可靠地完成。<br><strong>集群监控和部署：</strong>对集群的状态和上层应用服务的运行状态和性能指标进行监控，对异常事件产生警报和记录；为运维人员提供整个飞天平台以及上层应用的部署和配置管理，支持在线集群扩容、缩容和应用服务的在线升级。</p>
+<h2>分布式系统底层服务</h2>
+<h3>协调服务(女娲)</h3>
+<p>女娲(Nuwa)系统为飞天提供高可用的协调服务(Coordination Service)，是构建各类分布式应用的核心服务，它的作用是采用类似文件系统的树形命名空间来让分布式进程互相协同工作。例如，当集群变更导致特定的服务被迫改变物理运行位置时，如服务器或者网络故障、配置调整或者扩容时，借助女娲系统可以使其他程序快速定位到该服务新的接入点，从而保证了整个平台的高可靠性和高可用性。</p>
+<p>女娲系统基于类Paxos协议，由多个女娲Server以类似文件系统的树形结构存储数据，提供高可用、高并发用户请求的处理能力。</p>
+<p>女娲系统的目录表示一个包含文件的集合。与UNIX中的文件路径一样，女娲中路径是以“/”分割的，根目录(Root entry)的名字是“/”，所有目录的名字都是以“/”结尾的。与UNIX文件路径不同之处在于：女娲系统中所有文件或目录都必须使用从根目录开始的绝对路径。由于女娲系统的设计目的是提供协调服务，而不是存储大量数据，所以每个文件的内容(Value)的大小被限制在1MB以内。在女娲系统中，每个文件或目录都保存有创建者的信息。一旦某个路径被用户创建，其他用户就可以访问和修改这个路径的值(即文件内容或目录包含的文件名)。</p>
+<p>女娲系统支持Publish/Subscribe模式，其中一个发布者、多个订阅者(One Publisher/Many Subscriber)的模式提供了基本的订阅功能；另外，还可用通过多个发布者、多个订阅者(Many Publisher/Many Subscriber)的方式提供分布式选举(DistributedElection)和分布式锁的功能。</p>
+<p>再举一个使用女娲系统来实现负载均衡的例子：提供某一服务的多个节点，在服务启动的时候在女娲系统的同一目录下创建文件，例如，server1创建文件“nuwa://cluster/ myservice/server1”，server2在同一目录下创建“nuwa://cluster/myservice/server2”。当客户端使用远程过程调用时，首先列举女娲系统服务中“nuwa://cluster/myservice”目录下的文件，这样就可以获得server1和server2，客户端随后可以从中选择一个节点发出自己的请求，从而实现负载均衡。</p>
+<h3>远程过程调用(夸父)</h3>
+<p>在分布式系统中，不同计算机之间只能通过消息交换的方式进行通信。显式的消息通信必须通过Socket接口编程，而远程过程调用(Remote Procedure Call，RPC)可以隐藏显式的消息交换，使得程序员可以像调用本地函数一样来调用远程的服务。</p>
+<p>夸父(Kuafu)是飞天平台内核中负责网络通信的模块，它提供了一个RPC的接口，简化编写基于网络的分布式应用。夸父的设计目标是提供高可用(7×24小时)、大吞吐量(Gigabyte)、高效率、易用(简明API、多种协议和编程接口)的RPC服务。</p>
+<p>RPC客户端(RPC Client)通过URI指定请求需要发送的RPC服务端(RPC Server)的地址，目前夸父支持两种协议形式。</p>
+<p>TCP：例如，tcp://fooserver01:9000<br>Nuwa：例如，nuwa://nuwa01/FooServer</p>
+<p>与用流(stream)传输的TCP通信相比，夸父通信是以消息(Message)为单位的，支持多种类型的消息对象，包括标准字符串std::string和基于std::map实现的若干string键值对。</p>
+<p>夸父RPC同时支持异步(asynchronous)和同步(synchronous)的远程过程调用形式。</p>
+<p>异步调用：RPC函数调用时不等接收到结果就会立即返回;用户必须通过显式调用接收函数取得请求结果。<br>同步调用：RPC函数调用时会等待，直到接收到结果才返回。在实现中，同步调用是通过封装异步调用来实现的。</p>
+<p>在夸父的实现中，客户端程序通过Unix Domain Socket与本机上的一个夸父代理(Kuafu Proxy)连接，不同计算机之间的夸父代理会建立一个TCP连接。这样做的好处是可以更高效地使用网络带宽，系统可以支持上千台计算机之间的互联需求。此外，夸父利用女娲来实现负载均衡；对大块数据的传输做了优化；与TCP类似，夸父代理之间还实现了发送端和接收端的流控(Flow Control)机制。</p>
+<h3>安全管理(钟馗)</h3>
+<p>钟馗(Zhongkui)是飞天平台内核中负责安全管理的模块，它提供了以用户为单位的身份认证和授权，以及对集群数据资源和服务进行的访问控制。</p>
+<p>用户的身份认证(Authentication)是基于密钥机制的。<br>用户对资源的访问控制是基于权能(Capability)机制进行授权(Authorization)的。</p>
+<p>Capability是用于访问控制的一种数据结构，它定义了对一个或多个指定的资源(如目录、文件、表等)所具有的访问权限。用户访问飞天系统的资源时必须持有Capability，否则即视为非法。打一个比方，如果把Capability理解为地铁票，乘坐地铁(对地铁的一种访问方式)的时候必须要有Capability，即地铁票。</p>
+<p>密钥对是基于公开密钥方法的，包括一个私钥和相对应的公钥。在飞天平台系统中，密钥对用于数字签名服务，以保证Capability的不可伪造。换句话说，私钥用于产生数字签名(如签发Capability)，公钥用于验证数字签名的有效性(如验证签发过的Capability的有效性)。</p>
+<p>考虑到网络通信时任何通信节点都是不可信的，所以即使是飞天自身模块内部之间的通信也同样是需要认证和授权的，而且验证的机制也完全一样。</p>
+<h2>分布式文件系统（盘古）</h2>
+<p>盘古(Pangu)是一个分布式文件系统，盘古系统的设计目标是将大量通用机器的存储资源聚合在一起，为用户提供大规模、高可靠、高可用、高吞吐量和可扩展的存储服务，是飞天平台内核中的一个重要组成部分。</p>
+<p><strong>大规模：</strong>能够支持数十PB量级的存储大小(1PB=1000TB)，总文件数量达到亿量级。<br><strong>数据高可靠性：</strong>保证数据和元数据(Metadata)是持久保存并能够正确访问的，保证所有数据存储在处于不同机架的多个节点上面(通常设置为3)。即使集群中的部分节点出现硬件和软件故障，系统能够检测到故障并自动进行数据的备份和迁移，保证数据的安全存在。<br><strong>服务高可用性：</strong>保证用户能够不中断地访问数据，降低系统的不可服务时间。即使出现软硬件的故障、异常和系统升级等情况，服务仍可正常访问。<br><strong>高吞吐量：</strong>运行时系统I/O吞吐量能够随机器规模线性增长，保证响应时间。<br><strong>高可扩展性：</strong>保证系统的容量能够通过增加机器的方式得到自动扩展，下线机器存储的数据能够自动迁移到新加入的节点上。</p>
+<p>同时，盘古系统也能很好地支持在线应用的低延时需求。在盘古系统中，文件系统的元数据存储在多个主服务器(Master)上，文件内容存储在大量的块服务器(Chunk Server)上。客户端程序在使用盘古系统时，首先从主服务器获取元数据信息(包括接下来与哪些块服务器交互)，然后在块服务器上直接进行数据操作。由于元数据信息很小，大量的数据交互是客户端直接与块服务器进行的，因此盘古系统采用少量的主服务器来管理元数据，并使用Paxos协议保证元数据的一致性。此外，块大小被设置为64MB，进一步减少了元数据的大小，因此可以将元数据全部放到内存里，从而使得主服务器能够处理大量的并发请求。</p>
+<p>块服务器负责存储大小为64MB的数据块。在向文件写入数据之前，客户端将建立到3个块服务器的连接，客户向主副本(Replica)写入数据以后，由主副本负责向其他副本发送数据。与直接由客户端向3个副本写入数据相比，这样可以减少客户端的网络带宽使用。块副本在放置的时候，为保证数据可用性和最大化地使用网络带宽，会将副本放置在不同机架上，并优先考虑磁盘利用率低的机器。当硬件故障或数据不可用造成数据块的副本数目不满3份时，数据块会被重新复制。为保证数据的完整性，每块数据在写入时会同时计算一个校验值，与数据同时写入磁盘。当读取数据块时，块服务器会再次计算校验值与之前存入的值是否相同，如果不同就说明数据出现了错误，需要从其他副本重新读取数据。</p>
+<p>在线应用对盘古系统提出了与离线应用不同的挑战：OSS、OTS要求低时延数据读写，ECS在要求低时延的同时还需要具备随机写的能力。针对这些需求，盘古系统实现了事务日志文件和随机访问文件，用于支撑在线应用。其中，日志文件通过多种方法对时延进行了优化，包括设置更高的优先级、由客户端直接写多份拷贝而不是用传统的流水线方式、写入成功不经过Master确认等。随机访问文件则允许用户随机读写，同时也应用了类似日志文件的时延优化技术。</p>
+<h2>资源管理和任务调度（伏羲）</h2>
+<p>伏羲(Fuxi)是飞天平台内核中负责资源管理和任务调度的模块，同时也为应用开发提供了一套编程基础框架。伏羲同时支持强调响应速度的在线服务和强调处理数据吞吐量的离线任务。在伏羲中，这两类应用分别简称为Service和Job。</p>
+<p>在资源管理方面，伏羲主要负责调度和分配集群的存储、计算等资源给上层应用；管理运行在集群节点上任务的生命周期；在多用户运行环境中，支持计算额度、访问控制、作业优先级和资源抢占，在保证公平的前提下，达到有效地共享集群资源。</p>
+<p>在任务调度方面，伏羲面向海量数据处理和大规模计算类型的复杂应用，提供了一个数据驱动的多级流水线并行计算框架，在表述能力上兼容MapReduce、Map-Reduce-Merge等多种编程模式；自动检测故障和系统热点，重试失败任务，保证作业稳定可靠运行完成;具有高可扩展性，能够根据数据分布优化网络开销。</p>
+<p>伏羲中应用了“Master/Worker”工作模型。其中，Master负责进行资源申请和调度、为Worker创建工作计划(Plan)并监控Worker的生命周期，Worker负责执行具体的工作计划并及时向Master汇报工作状态(Status)。此外，Master支持多级模式，即一个Master可以隶属于另外一个Master之下。</p>
+<p>伏羲Master负责整个集群资源管理和调度，处理Job/Service启动、停止、Failover等生命周期的维护。同时伏羲Master支持多用户额度配置、Job/Service的多优先级设置和动态资源抢占逻辑，可以说是飞天平台的“大脑”。伏羲对资源调度是多维度的，可以根据CPU、内存等系统资源，以及应用自定义的虚拟资源对整个机群进行资源分配和调度。</p>
+<p>土伯(Tubo)是部署在每台由伏羲管理的机器上的后台进程，负责收集并向伏羲Master报告本机的状态，包括系统资源的消耗、Master或Worker进程的运行、等待、完成和失败事件，并根据伏羲Master或者Job/Service Master的指令，启动或杀死指定的Master或Worker进程。同时土伯还负责对计算机健康状况进行监控，对异常Worker(比如内存超用)进行及时的清理和汇报。</p>
+<p>对于在线服务(Service)，由伏羲Master负责ServiceMaster的启动与状态监控，处理相应Service Master的资源申请请求。Service Master负责管理Service Worker的任务分配、生命周期管理以及Failover的管理。</p>
+<p>对于离线任务(Job)，伏羲Master负责Job Master的启动与状态监控，处理相应JobMaster的资源申请请求。Job Master根据用户输入的Job描述文件，将任务分解成一个或以上的Task，每个Task的资源申请、Task Worker的调度和生命周期维护由Task Master负责。</p>
+<h3>在线服务调度</h3>
+<p>在飞天平台内核中，每个Service都有一个ServiceMaster和多个不同角色(Role)的Service Worker，它们一起协同工作来完成整个服务的功能。Service Master是伏羲Master管理下的子Master(Child Master)，它负责这个Service相关的资源申请、状态维护以及故障恢复，并定期与伏羲Master进行交互，确保整个Service正确、正常地运行。每个Service Worker的角色和执行的动作，都是由用户来定义的。</p>
+<p>每个ServiceWorker负责处理一个到多个数据分片(Partition)，同一时刻一个分片只会被分配到一个Service Worker处理。将数据分割成为互不相关的分片，然后将不同分片给不同Service Worker来处理是构建大规模应用服务的关键特性。数据分片是一个抽象的概念，在不同的应用中有不同的含义。</p>
+<p>在服务运行的过程中，每个Service的数据分片的数目和内容都是可以动态变化的，应用程序可以根据实际需要对数据分片动态地进行加载(Load)、卸载(Unload)、分裂(Split)和迁移(Migrate)等操作。</p>
+<h3>离线任务调度</h3>
+<p>在飞天平台中，一个离线任务(Job)的执行过程被抽象为一个有向无环图(Directed Acyclic Graph，DAG)：图上每个顶点对应一个Task，每条边对应一个Pipeline。一个连接两个Task的Pipeline表示前一个Task的输出是后一个Task的输入。</p>
+<p>每个离线任务都有一个JobMaster负责根据用户输入的任务描述(Job description)构造DAG和调度DAG中所有Task的执行。每个Task的Task Master会根据要处理的实例数量、数据在集群的分布及处理实例的资源需求，向伏羲Master申请机器资源并分配Task Worker在其上执行。分配到每台机器上的实例(Instance)是由Task Worker来具体执行完成的。每台机器上的Task Worker可以根据需要选择多线程或者多进程的不同运行模式。</p>
+<p>在离线Job的容错方面，除了提供对异常机器的黑名单机制、长尾Instance的后备Worker机制外，伏羲还提供了快照(Snapshot)机制。快照是Task级别的容错机制。如果一个Task的n个Instance在前一次运行失败时完成了m个，那么Task重启后只会重新调度运行剩余的n−m个Instance。</p>
+<h2>集群监控和部署</h2>
+<h3>集群监控(神农)</h3>
+<p>神农(Shennong)是飞天平台内核中负责信息收集、监控和诊断的模块。它通过在每台物理机器上部署轻量级的信息采集模块，获取各个机器的操作系统与应用软件运行状态，监控集群中的故障，并通过分析引擎对整个飞天的运行状态进行评估。</p>
+<p>神农系统包括Master、Inspector和Agent三个部分。</p>
+<p>Master：负责管理所有神农Agent，并对外提供统一的接口来处理神农用户的订阅(Subscription)请求，在集群中只有一个Master。<br>Inspector：是部署在每一台机器上的进程，负责采集当前机器和进程的通用信息，并实时发送给该机器上的神农Agent。<br>Agent：是部署在每台物理机器的后台程序。Agent负责接受来自应用和Inspector写入的信息。Agent启动后，会立刻向Master注册自己，并根据Master发来的订阅(Subscription)命令执行相应的信息采集、过滤、聚合和处理操作。目前神农Agent处理的数据分为两类：事件类数据(如应用程序故障和报警)和数值类数据(如当前应用的性能计数、机器I/O吞吐量等)。<br>　　神农的用户通过Master来访问神农系统，以数据订阅(Subscription)的方式获取神农系统采集到的信息。</p>
+<p>神农的MonitorService和AnalysisService是使用神农系统的两个应用程序。</p>
+<p>MonitorService在集群中的一台机器上部署，通过向各个Agent发送特定的监控请求，并根据配置设定的规则，实现对集群的状态和事件的监控，以及报警和记录。<br>AnalysisService也是部署在集群中的一台机器上，通过访问神农来获得主要性能数据，然后聚合数据并计算出系统的总体资源情况(例如，集群的总资源消耗、总I/O吞吐量等)，并且向外提供计算结果供查询。</p>
+<h3>集群部署(大禹)</h3>
+<p>大禹(Dayu)是飞天内核中负责提供配置管理和部署的模块，它包括一套为集群的运维人员提供的完整工具集，功能涵盖了集群配置信息的集中管理、集群的自动化部署、集群的在线升级、集群扩容、集群缩容，以及为其他模块提供集群基本信息等。每个飞天模块的发布包都包含一个部署升级的描述文件，定义了该模块部署和升级的流程，提供给大禹使用。</p>
+<p>在结构上，大禹包含了集群配置数据库、节点守护进程、客户端工具集等部分。</p>
+<p>集群配置数据库负责存放和管理所有部署了飞天的集群的配置信息，包括集群中每个节点承担的角色、各个模块的软件版本、各个模块的基本参数配置等。同时，数据库中还记录了部署或升级时每个节点的任务执行状态，保证了在部署或升级时少量不在线节点可以在重新连线后进行自动修复。</p>
+<p>节点守护进程运行在集群的每一个节点上，负责与集群配置数据库同步该节点相关的集群信息，执行节点相关的具体运维任务，并汇报任务执行状态。节点守护进程本身是自我升级的，只需部署一次，即能保证运行的是该集群最适合的版本。在模块软件部署和升级的过程中，节点守护进程还负责软件的下载分发，为了保证效率和规避单点故障，软件的分发采用P2P的方式进行。</p>
+<p>客户端工具集是运维人员实际使用的命令行工具和网页界面，运维人员通过这些工具对集群进行部署、升级、扩容、缩容等具体操作。大部分操作都提供了自动化和人机交互执行两种方式，分别适应简便操作和精细化控制这两种场景。在部署和升级的过程中，客户端工具负责控制总体的操作顺序，维护模块之间的依赖关系，并根据状态信息决定是否回滚或中断当前流程。</p>
+
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/29/SaaS-PaaS-LaaS/" title="SaaS PaaS LaaS">
+                    <div class="prevTitle">SaaS PaaS LaaS</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "KsMxA7Xv4XNPE1fE1XzC6Wu1-gzGzoHsz",
+        appKey: "kE7Tjawef19blReL27CzcvEq",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ylu971211@gmail.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Eliasliangyu" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">OpenStack-华为云</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">OpenStack各组件功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一部分：支撑组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">第二部分：业务组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Nova:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Neutron:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Cinder:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">Swift:</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">飞天-阿里云</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">分布式系统底层服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.1.</span> <span class="toc-text">协调服务(女娲)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.2.</span> <span class="toc-text">远程过程调用(夸父)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.3.</span> <span class="toc-text">安全管理(钟馗)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">分布式文件系统（盘古）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">资源管理和任务调度（伏羲）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.1.</span> <span class="toc-text">在线服务调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.2.</span> <span class="toc-text">离线任务调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.</span> <span class="toc-text">集群监控和部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.1.</span> <span class="toc-text">集群监控(神农)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.2.</span> <span class="toc-text">集群部署(大禹)</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 11
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/30</span><a class="archive-post-title" href="/2019/06/30/OpenStack与飞天/">Opentack与飞天</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span><a class="archive-post-title" href="/2019/06/29/SaaS-PaaS-LaaS/">SaaS PaaS LaaS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/25</span><a class="archive-post-title" href="/2019/06/25/Docker详细总结/">Docker详细总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/25</span><a class="archive-post-title" href="/2019/06/25/三种云的区别/">三种云的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/25</span><a class="archive-post-title" href="/2019/06/25/OpenStack架构知识梳理/">OpenStack架构知识梳理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href="/2019/06/19/Chrome扩展推荐/">Chrome扩展推荐</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/如何读懂代码/">如何读懂代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/给博客添加评论功能/">给博客添加评论功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/14</span><a class="archive-post-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">纪念iPhone XR刷机成砖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/iOS-13-不只有深色模式/">iOS 13 不只有深色模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/如何搭建属于自己的个人博客/">如何搭建属于自己的个人博客</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="experience"><span class="iconfont-archer">&#xe606;</span>experience</span>
+    
+        <span class="sidebar-tag-name" data-tags="Apple ios"><span class="iconfont-archer">&#xe606;</span>Apple ios</span>
+    
+        <span class="sidebar-tag-name" data-tags="Course"><span class="iconfont-archer">&#xe606;</span>Course</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: ""
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Eliasliangyu&#39;s blog</title>
+    <title>SaaS PaaS LaaS · Eliasliangyu&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -201,14 +203,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Eliasliangyu&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">SaaS PaaS LaaS</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">Eliasliangyu's Blog.</a>
 </header>
@@ -227,17 +238,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Eliasliangyu's Blog.
-            <!-- 文章页  -->
+            SaaS PaaS LaaS
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -245,12 +256,49 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Welcome to my blog
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.1k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/29</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -351,425 +399,194 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/30/OpenStack与飞天/">
-            
-                <span>Opentack与飞天</span>
-        </a>
-        <div class="abstract-content">
-            今天刚结束华为云的实训课程培训，对华为云的架构原理以及系统流程也算有一点了解。
-华为的实训人员一直强调华为云的技术优越性，那么和目前国内公有云实力排名第一...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/29/SaaS-PaaS-LaaS/">
-            
-                <span>SaaS PaaS LaaS</span>
-        </a>
-        <div class="abstract-content">
-            从小型企业到全球企业，云都是一个非常热门的话题，它是一个非常广泛的概念，涵盖了很多在线领域。 无论是应用程序还是基础架构部署，当你开始考虑将项目转移到云时...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/Docker详细总结/">
-            
-                <span>Docker详细总结</span>
-        </a>
-        <div class="abstract-content">
-            Docker是什么？在计算机技术日新月异的今天， Docker 在国内发展的如火如荼，特别是在一线互联网公司， Docker 的使用是十分普遍的，甚至成为...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/三种云的区别/">
-            
-                <span>三种云的区别</span>
-        </a>
-        <div class="abstract-content">
-            公有云
-公有云通常指第三方提供商用户能够使使用的云，公有云一般可通过 Internet 使用，可能是免费或成本低廉的。这种云有许多实例，可在当今整个开放的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/25/OpenStack架构知识梳理/">
-            
-                <span>OpenStack架构知识梳理</span>
-        </a>
-        <div class="abstract-content">
-            OpenStack既是一个社区，也是一个项目和一个开源软件，提供开放源码软件，建立公共和私有云，它提供了一个部署云的操作平台或工具集，其宗旨在于：帮助组织...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/19/Chrome扩展推荐/">
-            
-                <span>Chrome扩展推荐</span>
-        </a>
-        <div class="abstract-content">
-            ——/转载自少数派sspai.com/——
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>从小型企业到全球企业，云都是一个非常热门的话题，它是一个非常广泛的概念，涵盖了很多在线领域。 无论是应用程序还是基础架构部署，当你开始考虑将项目转移到云时，了解各种云服务的差异和优势就显得十分重要。</p>
 
-让网页焕新颜
+<p>通常有三种云服务模型：SaaS（软件即服务），PaaS（平台即服务）和IaaS（基础架构即服务）。 每个都有自己的好处和差异。为了您的组织能作出最佳选择，您有必要了解SaaS，PaaS和IaaS之间的差异。</p>
 
-浏览器的本职工作，当然是访问网页。不过，总有一些网站的设计让我们心生不快：铺天盖地的广告、陈...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/如何读懂代码/">
-            
-                <span>如何读懂代码</span>
-        </a>
-        <div class="abstract-content">
-            ——/转载自简书jianshu.com/——
-我们在写程序时，有不少时间都是在看别人的代码。 例如看小组的代码，看小组整合的守则，若一开始没规划怎么看， ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="experience">experience</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/给博客添加评论功能/">
-            
-                <span>给博客添加评论功能</span>
-        </a>
-        <div class="abstract-content">
-            给博客添加评论功能
-Hexo的评论系统有很多，常见的有以下几个：
+<p>下图总结了三种模型的主要差别：</p>
 
-多说：（凉了）
-网易云跟帖：（也凉了）
-畅言： http://changyan.kua...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Course">Course</a>
-    
-</div>
-            
-        </div>
+<p><img alt class="has" height="453" src="https://blogs.bmc.com/wp-content/uploads/2017/09/iaas-paas-saas-comparison-1024x759.jpg" width="612"></p>
+
+<h1>SaaS：软件即服务</h1>
+
+<p>软件即服务（也称为云应用程序服务）代表了云市场中企业最常用的选项。 SaaS利用互联网向其用户提供应用程序，这些应用程序由第三方供应商管理。 大多数SaaS应用程序直接通过Web浏览器运行，不需要在客户端进行任何下载或安装。</p>
+
+<h2>SaaS的交付</h2>
+
+<p>由于其网络传输模式，SaaS无需在每台计算机上下载和安装应用程序，而在每台计算机上下载和安装应用程序正是IT员工的噩梦。 通过SaaS，供应商可以管理所有潜在的技术问题，例如数据、中间件，服务器和存储，因此企业可以简化其维护和支持。</p>
+
+<h2>SaaS的优势</h2>
+
+<p>SaaS通过大大减少安装，管理和升级软件等繁琐任务所花费的时间和金钱，为员工和公司提供了许多好处。 这让技术人员可以花更多时间来处理组织内更紧迫的事情和问题。</p>
+
+<h2>SaaS的特点</h2>
+
+<p>有方面可以帮助您确定何时使用SaaS：</p>
+
+<ul><li>在统一的地方管理</li>
+</ul><ul><li>托管在远程服务器上</li>
+</ul><ul><li>可通过互联网访问</li>
+</ul><ul><li>用户不负责硬件或软件更新</li>
+</ul>
+
+<h2>何时使用SaaS</h2>
+
+<p>SaaS在许多场景情中是最有利的，包括：</p>
+
+<ul><li>如果您是一家初创公司或小公司，需要快速启动电子商务，没有时间处理服务器问题或软件</li>
+</ul><ul><li>适用于需要协作的短期项目</li>
+</ul><ul><li>如果您需要不常用的应用程序，例如税务软件</li>
+</ul><ul><li>适用于需要通过Web和移动访问的应用程序</li>
+</ul>
+
+<h2>SaaS的例子</h2>
+
+<p>Google Apps、Dropbox、Salesforce、Cisco WebEx、Concur和GoToMeeting等</p>
+
+<h1>PaaS：平台即服务</h1>
+
+<p>云平台服务或平台即服务（PaaS）为某些软件提供云组件，这些组件主要用于应用程序。 PaaS为开发人员提供了一个框架，使他们可以基于它创建自定义应用程序。所有服务器，存储和网络都可以由企业或第三方提供商进行管理，而开发人员可以负责应用程序的管理。</p>
+
+<h2>PaaS的交付</h2>
+
+<p>PaaS的交付模式类似于SaaS，除了通过互联网提供软件，PaaS提供了一个软件创建平台。该平台通过Web提供，使开发人员可以自由地专注于创建软件，同时不必担心操作系统、软件更新，存储或基础架构。</p>
+
+
+<p>PaaS允许企业使用特殊的软件组件设计和创建内置于PaaS中的应用程序。由于具有某些云特性，这些应用程序或中间件具有可扩展性和高可用性。</p>
+
+<h2>PaaS的优势</h2>
+
+<p>无论您的公司规模如何，使用PaaS都有很多优势：</p>
+
+<ul><li>使应用程序的开发和部署变得简单且经济高效</li>
+</ul><ul><li>可扩展</li>
+</ul><ul><li>高度可用</li>
+</ul><ul><li>使开发人员能够创建自定义应用程序，而无需维护软件</li>
+</ul><ul><li>大大减少了编码量</li>
+</ul><ul><li>自动化业务策略</li>
+</ul><ul><li>允许轻松迁移到混合模型</li>
+</ul>
+
+<h2>PaaS的特点</h2>
+
+<p>PaaS具有许多将其定义为云服务的特征，包括：</p>
+
+<ul><li>它基于虚拟化技术，这意味着随着业务的变化，资源可以轻松扩展或缩小</li>
+</ul><ul><li>提供各种服务以协助开发，测试和部署应用程序</li>
+</ul><ul><li>许多用户可以访问相同的开发应用程序</li>
+</ul><ul><li>Web服务和数据库是集成的</li>
+</ul>
+
+<h2>何时使用PaaS</h2>
+
+<p>在许多情况下，使用PaaS是有益的甚至是必要的。 如果有多个开发人员在同一个开发项目上工作，或者必须包含其他供应商，PaaS可以为整个过程提供极大的速度和灵活性。 如果您希望能够创建自己的自定义应用程序，PaaS也是有益的。 云服务还可以大大降低成本，并且可以简化您在快速开发或部署应用程序时出现的一些挑战。</p>
+
+<h2>PaaS的例子</h2>
+
+<p>AWS Elastic Beanstalk、Windows Azure、Heroku、Force.com、Google App Engine，Apache Stratos，OpenShift。</p>
+
+<h1>IaaS：基础架构即服务</h1>
+
+<p>云基础架构服务称为基础架构即服务（IaaS），由高度可扩展和自动化的计算资源组成。 IaaS是完全自助服务，用于访问和监控计算、网络，存储和其他服务等内容，它允许企业按需求和需要购买资源，而不必购买全部硬件。</p>
+
+<h2>IaaS的交付</h2>
+
+<p>IaaS通过虚拟化技术为组织提供云计算基础架构，包括服务器、网络，操作系统和存储等。这些云服务器通常通过仪表盘或API提供给客户端，IaaS客户端可以完全控制整个基础架构。 IaaS提供与传统数据中心相同的技术和功能，而无需对其进行物理上的维护或管理。 IaaS客户端仍然可以直接访问其服务器和存储，但它们都通过云中的“虚拟数据中心”。</p>
+
+<p>与SaaS或PaaS相反，IaaS客户端负责管理应用程序、运行时、操作系统，中间件和数据等方面。但是，IaaS的提供商管理服务器、硬盘驱动器、网络，虚拟化和存储。一些提供商甚至在虚拟化层之外提供更多服务，例如数据库或消息队列。</p>
+
+<h2>IaaS的优势</h2>
+
+<p>选择IaaS有很多好处，例如：</p>
+
+<ul><li>是最灵活的云计算模型</li>
+</ul><ul><li>轻松实现存储、网络，服务器和处理能力的自动部署</li>
+</ul><ul><li>可以根据消耗量购买硬件</li>
+</ul><ul><li>使客户能够完全控制其基础架构</li>
+</ul><ul><li>可以根据需要购买资源</li>
+</ul><ul><li>高度可扩展</li>
+</ul>
+
+<h2>IaaS的特点</h2>
+
+<p>在考虑IaaS时要考虑的一些特征是：</p>
+
+<ul><li>资源可作为服务提供</li>
+</ul><ul><li>费用因消费而异</li>
+</ul><ul><li>服务高度可扩展</li>
+</ul><ul><li>通常在单个硬件上包括多个用户</li>
+</ul><ul><li>为组织提供对基础架构的完全控制</li>
+</ul><ul><li>动态灵活</li>
+</ul>
+
+<h2>何时使用IaaS</h2>
+
+<p>与SaaS和PaaS一样，有些特定场景使用IaaS是最好的。如果您是初创公司或小公司，IaaS是一个很好的选择，因此您不必花费时间或金钱来创建硬件和软件。 有些大型组织希望完全控制其应用程序和基础架构，同时又想仅购买实际消耗或需要的硬，IaaS对他们也是有益的。对于快速发展的公司而言，IaaS可能是一个不错的选择，因为您不必在需求变化和发展时承诺使用特定的硬件或软件。如果您不确定新应用程序需要什么，这也会有所帮助，因为根据需要可以根据需要进行扩展或缩小。</p>
+
+<h2>IaaS的例子</h2>
+
+<p>DigitalOcean，Linode，Rackspace，AWS，Cisco Metapod，Microsoft Azure，Google Compute Engine（GCE）</p>
+
+<h1>SaaS vs PaaS vs IaaS</h1>
+
+<p>总体而言，每种云模型都提供了自己的特定功能和特性，因此您的解组织了解这些差异至关重要。 无论您是在寻找云存储软件，还是一个能创建定自定义应用程序的平滑平台，，或者希望完全控制整个基础架构而无需对其进行物理维护，您可以使用云服务。 无论您选择哪个选项，迁移到云都是业务和技术的未来，并且很必要让大家正确的了解这一点。</p>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/14/纪念iPhone-XR刷机成砖/">
-            
-                <span>纪念iPhone XR刷机成砖</span>
-        </a>
-        <div class="abstract-content">
-            纪念iPhone XR刷机成砖
-本人于之前将iPhone XR刷成ios13尝鲜，刚上手体验并未发现明显BUG，只是系统的中英文显示有些混乱，例如提醒事项...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Apple ios">Apple ios</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/12/iOS-13-不只有深色模式/">
-            
-                <span>iOS 13 不只有深色模式</span>
-        </a>
-        <div class="abstract-content">
-            ——/转载自少数派sspai.com/——
-    按照惯例，苹果于北京时间 6 月 4 日凌晨的 WWDC 上发布了各个平台的新一代操作系统。相比去年专...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Apple ios">Apple ios</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/06/30/OpenStack与飞天/" title="Opentack与飞天">
+                    <div class="nextTitle">Opentack与飞天</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/25/Docker详细总结/" title="Docker详细总结">
+                    <div class="prevTitle">Docker详细总结</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "KsMxA7Xv4XNPE1fE1XzC6Wu1-gzGzoHsz",
+        appKey: "kE7Tjawef19blReL27CzcvEq",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/pika.jpg">
-    <div class="profile-name">Eliasliangyu</div>
-    
-    <div class="profile-signature">
-        Peace And Love
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:ylu971211@gmail.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Eliasliangyu" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/wechat.jpg">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
-            
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="http://www.chzu.edu.cn" target="_black">SCHOOL</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//" target="_black">PNCAS</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//" target="_black">HDPS</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
@@ -857,6 +674,24 @@ Hexo的评论系统有很多，常见的有以下几个：
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">SaaS：软件即服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">SaaS的交付</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">SaaS的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">SaaS的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">何时使用SaaS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">SaaS的例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">PaaS：平台即服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">PaaS的交付</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">PaaS的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">PaaS的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.</span> <span class="toc-text">何时使用PaaS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.5.</span> <span class="toc-text">PaaS的例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">IaaS：基础架构即服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">IaaS的交付</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">IaaS的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">IaaS的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">何时使用IaaS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">IaaS的例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">SaaS vs PaaS vs IaaS</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1130,6 +965,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
