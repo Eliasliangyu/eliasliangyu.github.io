@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://eliasliangyu.github.io/2019/08/15/Flume-Kafka-SparkStreaming%E5%AE%9E%E7%8E%B0%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/</loc>
+    <lastmod>2019-08-15</lastmod>
+  </url>  <url>
+    <loc>https://eliasliangyu.github.io/2019/08/15/%E6%88%91%E7%9A%84%E8%AE%BE%E5%A4%87/</loc>
+    <lastmod>2019-08-15</lastmod>
+  </url>  <url>
     <loc>https://eliasliangyu.github.io/2019/07/18/HeartDisease-Risk-Prediction-System%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2019-07-23</lastmod>
   </url>  <url>
