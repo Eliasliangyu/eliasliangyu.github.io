@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Hi-ID博客推荐 · youliangyu blog</title>
+    <title>macOS Catalina 10.15黑苹果记录 · youliangyu blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/">youliangyu Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hi-ID博客推荐</a>
+                <a href="#" class="post-name">macOS Catalina 10.15黑苹果记录</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:40vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hi-ID博客推荐
+            macOS Catalina 10.15黑苹果记录
             <!-- 404 -->
             
         </h1>
@@ -279,20 +279,14 @@ height:40vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class="post-intro-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="recommend">recommend</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">125</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">630</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/05</span>
+                    <span class="post-intro-time">2019/12/15</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -416,15 +410,22 @@ height:40vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p><b><a href="http://www.hi-id.com" target="_blank" rel="noopener">Hi-ID</a></b>是一个许久不更新的博客，冲浪时偶然发现，其内容着实有趣，从专利分析苹果的工业设计，算是谈论苹果工业设计的技术派，也是评判工业设计时为数不多靠谱的声音。</p>
-<p><img src="//eliasliangyu.github.io/2019/07/05/Hi-ID博客推荐/1.png" alt="Hi-ID主页"></p>
-<p>下面是我个人对Hi-ID博客中的几篇文章推荐。</p>
-<p><b><a href="http://www.hi-id.com/?p=3535" target="_blank" rel="noopener">Apple 的 Logo 设计</a></b></p>
-<p><b><a href="http://www.hi-id.com/?p=3286" target="_blank" rel="noopener">Apple “无缝”设计之历程</a></b></p>
-<p><b><a href="http://www.hi-id.com/?p=3445" target="_blank" rel="noopener">从圆角到圆角</a></b></p>
-<p><b><a href="http://www.hi-id.com/?p=4239" target="_blank" rel="noopener">Apple 那些“无关紧要”的设计改进</a></b></p>
-<p><b><a href="http://www.hi-id.com/?p=4136" target="_blank" rel="noopener">HomePod 的设计</a></b></p>
+        <blockquote><p><b>操作有风险，入坑需谨慎</b></p>
+<p>本文只为记录三天的黑苹果完成过程，并不称为教程，只做为记录展示</p></blockquote>
 
+<h3 id="电脑配置"> 电脑配置</h3><table><thead><tr><th>规格</th><th>详细信息</th></tr></thead><tbody><tr><td>电脑型号</td><td>联想Lenovo Ideapad720s-14 笔记本电脑</td></tr><tr><td>操作系统</td><td>macOS Catalina 10.15.1 18B75</td></tr><tr><td>处理器</td><td>Intel® Core™ i5-7200U CPU @ 2.7GHz</td></tr><tr><td>内存</td><td>8 GB 2133MHz DDR4</td></tr><tr><td>硬盘</td><td>Lexar NM610 500G(NVME Pcle)</td></tr><tr><td>显卡</td><td>英特尔 HD Graphics 620 1536MB (显卡仿冒：注入platform-id:0x3e9b0009)</td></tr><tr><td>显示器</td><td>FHD 1920x1080 (14 英寸)</td></tr><tr><td>声卡</td><td>ALC236 (layout-id:2)</td></tr><tr><td>网卡</td><td>Qualcomm Atheros NFA435</td></tr></tbody></table><h3 id="windows下制作macos-mojave安装盘"><a class="markdownIt-Anchor" href="#windows下制作macos-mojave安装盘"></a> Windows下制作macOS Mojave安装盘</h3><h3 id="准备工具"><a class="markdownIt-Anchor" href="#准备工具"></a> 准备工具</h3><ul><li>U盘大于8G</li><li>U 盘大小不限做 PE 盘</li><li>系统镜像下载：<a href="https://blog.daliansky.net/tags/%E9%95%9C%E5%83%8F/" target="_blank" rel="noopener">黑果小兵</a></li><li><a href="etcher.io">etcher</a></li></ul><h3 id="制作安装镜像"><a class="markdownIt-Anchor" href="#制作安装镜像"></a> 制作安装镜像</h3><p>镜像制作：下载<a href="https://etcher.io" target="_blank" rel="noopener">etcher</a>，打开镜像，选择U盘，点击Flash即可</p><h3 id="bios设置"><a class="markdownIt-Anchor" href="#bios设置"></a> BIOS设置</h3><p>开机按<code>F2</code>键进入BIOS设置</p><ul><li>Configuration<ul><li>System Performance Mode: <code>Intelligent</code> <em>解决20%以下电量时蓝牙关闭问题</em></li></ul></li><li>Security<ul><li>Intel SGX: <code>Disable</code> or <code>Software Control</code> <em>视BIOS版本不同操作会有所不同</em></li></ul></li><li>Boot<ul><li>Boot Mode: <code>Legacy Support</code></li><li>Boot Priority: <code>UEFI First</code></li><li>Fast Boot: <code>Disabled</code></li></ul></li><li>Exit<ul><li>OS Optimized Defaults: <code>Disabled</code></li></ul></li></ul><h2 id="安装系统"> 安装系统</h2><p>F12进入UEFI引导界面后选择U盘引导，就会进入Clover引导界面，与windows及Linux一样，根据安装引导界面提示一步一步进行即可，具体流程不一一介绍（安装过程中不要先替换EFI，等安装全部结束后再执行替换EFI的操作）</p>
+<h2>EFI替换以及Clover配置</h2>
+<blockquote><p>新的系统安装成功后，EFI还位于U盘里，将U盘里的EFI复制到磁盘的EFI分区里，这样以后开机就不需要U盘引导了。</p></blockquote>
+<p>使用Clover Configurator工具，挂载磁盘分区，打开分区，将U盘引导盘内的EFI文件夹直接替换磁盘内的EFI文件，并对EFI/Clover/kexts/others内的kext驱动文件进行增删，以及对config.plist文件的修改以符合本机的硬件配置</p>
+<li><p>安装后所需要执行的动作：</p><ul><li><a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html#undefined" target="_blank" rel="noopener">合并和替换EFI</a> <a href="https://blog.daliansky.net/Add-CLOVER-boot-to-UEFI-without-any-tools.html" target="_blank" rel="noopener">不借助任何工具将CLOVER引导添加进UEFI的正确姿势</a></li><li>驱动：显卡、声卡、USB定制：<a href="https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html" target="_blank" rel="noopener">Hackintool(原Intel FB-Patcher)使用教程及插入姿势</a> / <a href="https://blog.daliansky.net/Intel-core-display-platformID-finishing.html" target="_blank" rel="noopener">黑苹果必备：Intel核显platform ID整理及smbios速查表</a> / <a href="https://blog.daliansky.net/Coffee-Lake-frame-buffer-patch-and-UHD630-Coffee-Lake-ig-platform-id-data-finishing.html" target="_blank" rel="noopener">Coffee Lake帧缓冲区补丁及UHD630 Coffee Lake ig-platform-id数据整理</a> <a href="https://blog.daliansky.net/Tutorial-Using-Hackintool-to-open-the-correct-pose-of-the-8th-generation-core-display-HDMI-or-DVI-output.html" target="_blank" rel="noopener">教程：利用Hackintool打开第8代核显HDMI输出的正确姿势</a></li><li>声卡仿冒：<a href="https://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-of-AppleHDA.html" target="_blank" rel="noopener">使用AppleALC声卡仿冒驱动AppleHDA的正确姿势</a></li><li>无线网卡：<a href="https://blog.daliansky.net/DW1820A_BCM94350ZAE-driver-inserts-the-correct-posture.html" target="_blank" rel="noopener">DW1820A/BCM94350ZAE/BCM94356ZEPA50DX插入的正确姿势</a> <a href="https://blog.daliansky.net/Broadcom-BCM94352z-DW1560-drive-new-posture.html" target="_blank" rel="noopener">Broadcom BCM94352z/DW1560驱动新姿势新方法</a></li></ul></li><li>
+
+<h2>结尾</h2>
+附图<p></p>
+![关于本机](1.png)<p></p>
+![设置](2.png)<p></p>
+![桌面](3.png)<p></p>
+
+</li>
     </article>
     <!-- license  -->
     
@@ -432,17 +433,12 @@ height:40vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/07/12/V2EX社区论坛推荐/" title="V2EX社区论坛推荐">
-                    <div class="nextTitle">V2EX社区论坛推荐</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/06/25/Docker详细总结/" title="Docker详细总结">
-                    <div class="prevTitle">Docker详细总结</div>
+                <a href="/2019/09/28/我为什么用花呗/" title="我为什么用花呗">
+                    <div class="prevTitle">我为什么用花呗</div>
                 </a>
             
         </li>
@@ -590,7 +586,7 @@ top:40vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#电脑配置"><span class="toc-number">1.</span> <span class="toc-text"> 电脑配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows下制作macos-mojave安装盘"><span class="toc-number">2.</span> <span class="toc-text"> Windows下制作macOS Mojave安装盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工具"><span class="toc-number">3.</span> <span class="toc-text"> 准备工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#制作安装镜像"><span class="toc-number">4.</span> <span class="toc-text"> 制作安装镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bios设置"><span class="toc-number">5.</span> <span class="toc-text"> BIOS设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装系统"><span class="toc-number"></span> <span class="toc-text"> 安装系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">EFI替换以及Clover配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">结尾</span></a>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

@@ -6,10 +6,31 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eliasliangyu.github.io/"/>
-  <updated>2019-10-21T02:18:10.904Z</updated>
+  <updated>2019-12-14T17:47:13.113Z</updated>
   <id>https://eliasliangyu.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>macOS Catalina 10.15黑苹果记录</title>
+    <link href="https://eliasliangyu.github.io/2019/12/15/macOS-Catalina-10-15%E9%BB%91%E8%8B%B9%E6%9E%9C%E8%AE%B0%E5%BD%95/"/>
+    <id>https://eliasliangyu.github.io/2019/12/15/macOS-Catalina-10-15黑苹果记录/</id>
+    <published>2019-12-14T16:09:12.000Z</published>
+    <updated>2019-12-14T17:47:13.113Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><b>操作有风险，入坑需谨慎</b></p><p>本文只为记录三天的黑苹果完成过程，并不称为教程，只做为记录展示</p></blockquote><h3 id="电脑配置"> 电脑配置</h3><table><thead><tr><th>规格</th><th>详细信息</th></tr></thead><tbody><tr><td>电脑型号</td><td>联想Lenovo Ideapad720s-14 笔记本电脑</td></tr><tr><td>操作系统</td><td>macOS Catalina 10.15.1 18B75</td></tr><tr><td>处理器</td><td>Intel® Core™ i5-7200U CPU @ 2.7GHz</td></tr><tr><td>内存</td><td>8 GB 2133MHz DDR4</td></tr><tr><td>硬盘</td><td>Lexar NM610 500G(NVME Pcle)</td></tr><tr><td>显卡</td><td>英特尔 HD Graphics 620 1536MB (显卡仿冒：注入platform-id:0x3e9b0009)</td></tr><tr><td>显示器</td><td>FHD 1920x1080 (14 英寸)</td></tr><tr><td>声卡</td><td>ALC236 (layout-id:2)</td></tr><tr><td>网卡</td><td>Qualcomm Atheros NFA435</td></tr></tbody></table><h3 id="windows下制作macos-mojave安装盘"><a class="markdownIt-Anchor" href="#windows下制作macos-mojave安装盘"></a> Windows下制作macOS Mojave安装盘</h3><h3 id="准备工具"><a class="markdownIt-Anchor" href="#准备工具"></a> 准备工具</h3><ul><li>U盘大于8G</li><li>U 盘大小不限做 PE 盘</li><li>系统镜像下载：<a href="https://blog.daliansky.net/tags/%E9%95%9C%E5%83%8F/" target="_blank" rel="noopener">黑果小兵</a></li><li><a href="etcher.io">etcher</a></li></ul><h3 id="制作安装镜像"><a class="markdownIt-Anchor" href="#制作安装镜像"></a> 制作安装镜像</h3><p>镜像制作：下载<a href="https://etcher.io" target="_blank" rel="noopener">etcher</a>，打开镜像，选择U盘，点击Flash即可</p><h3 id="bios设置"><a class="markdownIt-Anchor" href="#bios设置"></a> BIOS设置</h3><p>开机按<code>F2</code>键进入BIOS设置</p><ul><li>Configuration<ul><li>System Performance Mode: <code>Intelligent</code> <em>解决20%以下电量时蓝牙关闭问题</em></li></ul></li><li>Security<ul><li>Intel SGX: <code>Disable</code> or <code>Software Control</code> <em>视BIOS版本不同操作会有所不同</em></li></ul></li><li>Boot<ul><li>Boot Mode: <code>Legacy Support</code></li><li>Boot Priority: <code>UEFI First</code></li><li>Fast Boot: <code>Disabled</code></li></ul></li><li>Exit<ul><li>OS Optimized Defaults: <code>Disabled</code></li></ul></li></ul><h2 id="安装系统"> 安装系统</h2><p>F12进入UEFI引导界面后选择U盘引导，就会进入Clover引导界面，与windows及Linux一样，根据安装引导界面提示一步一步进行即可，具体流程不一一介绍（安装过程中不要先替换EFI，等安装全部结束后再执行替换EFI的操作）</p><h2>EFI替换以及Clover配置</h2><blockquote><p>新的系统安装成功后，EFI还位于U盘里，将U盘里的EFI复制到磁盘的EFI分区里，这样以后开机就不需要U盘引导了。</p></blockquote><p>使用Clover Configurator工具，挂载磁盘分区，打开分区，将U盘引导盘内的EFI文件夹直接替换磁盘内的EFI文件，并对EFI/Clover/kexts/others内的kext驱动文件进行增删，以及对config.plist文件的修改以符合本机的硬件配置</p><li><p>安装后所需要执行的动作：</p><ul><li><a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html#undefined" target="_blank" rel="noopener">合并和替换EFI</a> <a href="https://blog.daliansky.net/Add-CLOVER-boot-to-UEFI-without-any-tools.html" target="_blank" rel="noopener">不借助任何工具将CLOVER引导添加进UEFI的正确姿势</a></li><li>驱动：显卡、声卡、USB定制：<a href="https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html" target="_blank" rel="noopener">Hackintool(原Intel FB-Patcher)使用教程及插入姿势</a> / <a href="https://blog.daliansky.net/Intel-core-display-platformID-finishing.html" target="_blank" rel="noopener">黑苹果必备：Intel核显platform ID整理及smbios速查表</a> / <a href="https://blog.daliansky.net/Coffee-Lake-frame-buffer-patch-and-UHD630-Coffee-Lake-ig-platform-id-data-finishing.html" target="_blank" rel="noopener">Coffee Lake帧缓冲区补丁及UHD630 Coffee Lake ig-platform-id数据整理</a> <a href="https://blog.daliansky.net/Tutorial-Using-Hackintool-to-open-the-correct-pose-of-the-8th-generation-core-display-HDMI-or-DVI-output.html" target="_blank" rel="noopener">教程：利用Hackintool打开第8代核显HDMI输出的正确姿势</a></li><li>声卡仿冒：<a href="https://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-of-AppleHDA.html" target="_blank" rel="noopener">使用AppleALC声卡仿冒驱动AppleHDA的正确姿势</a></li><li>无线网卡：<a href="https://blog.daliansky.net/DW1820A_BCM94350ZAE-driver-inserts-the-correct-posture.html" target="_blank" rel="noopener">DW1820A/BCM94350ZAE/BCM94356ZEPA50DX插入的正确姿势</a> <a href="https://blog.daliansky.net/Broadcom-BCM94352z-DW1560-drive-new-posture.html" target="_blank" rel="noopener">Broadcom BCM94352z/DW1560驱动新姿势新方法</a></li></ul></li><li><h2>结尾</h2>附图<p></p>![关于本机](1.png)<p></p>![设置](2.png)<p></p>![桌面](3.png)<p></p></li>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>我为什么用花呗</title>
