@@ -6,10 +6,31 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eliasliangyu.github.io/"/>
-  <updated>2020-01-11T14:47:46.810Z</updated>
+  <updated>2020-06-15T05:46:12.445Z</updated>
   <id>https://eliasliangyu.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python岗位信息数据可视化</title>
+    <link href="https://eliasliangyu.github.io/2020/06/15/python%E5%B2%97%E4%BD%8D%E4%BF%A1%E6%81%AF%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    <id>https://eliasliangyu.github.io/2020/06/15/python岗位信息数据可视化/</id>
+    <published>2020-06-15T04:47:05.000Z</published>
+    <updated>2020-06-15T05:46:12.445Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>分析招聘网站（拉勾网）的Python岗位招聘情况，通过爬取岗位相关的地区分布、薪资水平、职位要求等数据保存到数据库，并将爬取出来的数据生成图表可视化。</p><p>源码已上传至<b><a href="https://github.com/Eliasliangyu/Visual-analysis-of-job-information" target="_blank" rel="noopener">Github</a></b></p><h2>一：开发环境</h2><p>win10、python3.7及相关第三方库</p><p>抓包工具：Fiddler</p><p>数据库：MySQL</p><p>IDE：Pycharm</p><h2>二：开发流程</h2><h3>1：数据抓取</h3><p>Requests抓取岗位信息：</p>a:使用session保存cookies信息<pre><code>    def __init__(self):        self.lagou_session = requests.session()        self.header = {            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'        }        self.city_list = ""        </code></pre><p>b:获取全国城市列表的方法</p><pre><code>    def handle_city(self):        city_search = re.compile(r'www\.lagou\.com\/.*\/">(.*?)')        city_url = "https://www.lagou.com/jobs/allCity.html"        city_result = self.handle_request(method="GET",url=city_url)        #使用正则表达式获取城市列表        self.city_list = set(city_search.findall(city_result))        self.lagou_session.cookies.clear()</code></pre><p>c：解决服务器返回操作频繁</p><pre><code>        if '频繁' in response.text:            print('频繁')            #需要先清除cookies信息            self.lagou_session.cookies.clear()            #重新获取cookies信息            first_request_url = "https://www.lagou.com/jobs/list_python?city=%s&cl=false&fromSearch=true&labelWords=&suginput=" %info            self.handle_request(method="GET", url=first_request_url)            time.sleep(10)            continue</code></pre><p>d:使用多进程加速抓取</p><pre><code>    pool = multiprocessing.Pool(2)    for city in lagou.city_list:        pool.apply_async(lagou.handle_city_job,args=(city,))    pool.close()    pool.join()</code></pre><h2>二：数据存储</h2><h3>1：数据表设计</h3><pre><code>#创建数据库的连接engine = create_engine("mysql+pymysql://root:root@localhost:3306/lagou?charset=utf8")#操作数据库,需要我们创建一个sessionSession = sessionmaker(bind=engine)<p>#申明一个基类<br>Base = declarative_base()</p><p>class Lagoutables(Base):</p><pre><code>#表名称__tablename__ = &apos;lagou_data&apos;#id,设置为主键和自动增长id = Column(Integer,primary_key=True,autoincrement=True)#岗位ID,非空字段positionId = Column(Integer,nullable=True)# 经度longitude = Column(Float, nullable=False)# 纬度latitude = Column(Float, nullable=False)# 岗位名称positionName = Column(String(length=50), nullable=False)# 工作年限workYear = Column(String(length=20), nullable=False)# 学历education = Column(String(length=20), nullable=False)# 岗位性质jobNature = Column(String(length=20), nullable=True)# 公司类型financeStage = Column(String(length=30), nullable=True)# 公司规模companySize = Column(String(length=30), nullable=True)# 业务方向industryField = Column(String(length=30), nullable=True)# 所在城市city = Column(String(length=10), nullable=False)# 岗位标签positionAdvantage = Column(String(length=200), nullable=True)# 公司简称companyShortName = Column(String(length=50), nullable=True)# 公司全称companyFullName = Column(String(length=200), nullable=True)# 公司所在区district = Column(String(length=20), nullable=True)# 公司福利标签companyLabelList = Column(String(length=200), nullable=True)# 工资salary = Column(String(length=20), nullable=False)# 抓取日期crawl_date = Column(String(length=20), nullable=False)</code></pre><p></p></code></pre><p></p><h3>2：保存数据到MySQL</h3><pre><code>class HandleLagouData(object):    def __init__(self):        # 实例化session信息        self.mysql_session = Session()        self.date = time.strftime("%Y-%m-%d",time.localtime())<pre><code>def insert_item(self, item):    date = time.strftime(&quot;%Y-%m-%d&quot;, time.localtime())    #存储的数据结构    data = Lagoutables(        #岗位ID        positionId=item[&apos;positionId&apos;],        # 经度        longitude=item[&apos;longitude&apos;],        # 纬度        latitude=item[&apos;latitude&apos;],        # 岗位名称        positionName=item[&apos;positionName&apos;],        # 工作年限        workYear=item[&apos;workYear&apos;],        # 学历        education=item[&apos;education&apos;],        # 岗位性质        jobNature=item[&apos;jobNature&apos;],        # 公司类型        financeStage=item[&apos;financeStage&apos;],        # 公司规模        companySize=item[&apos;companySize&apos;],        # 业务方向        industryField=item[&apos;industryField&apos;],        # 所在城市        city=item[&apos;city&apos;],        # 岗位标签        positionAdvantage=item[&apos;positionAdvantage&apos;],        # 公司简称        companyShortName=item[&apos;companyShortName&apos;],        # 公司全称        companyFullName=item[&apos;companyFullName&apos;],        # 公司所在区        district=item[&apos;district&apos;],        # 公司福利标签        companyLabelList=&apos;,&apos;.join(item[&apos;companyLabelList&apos;]),        #工资        salary=item[&apos;salary&apos;],        # 抓取日期        crawl_date=date    )    # 在存储数据之前，先查询表中是否有这条岗位信息    query_result = self.mysql_session.query(Lagoutables).filter(Lagoutables.crawl_date == date,                                                                Lagoutables.positionId == item[&apos;positionId&apos;]).first()    if query_result:        pass        #print(&apos;该岗位信息已存在%s:%s:%s&apos; %(item[&apos;positionId&apos;], item[&apos;city&apos;], item[&apos;positionName&apos;]))    else:        self.mysql_session.add(data)        self.mysql_session.commit()        #print(&apos;新增岗位信息%s&apos; %item[&apos;positionId&apos;])</code></pre><p></p></code></pre><p></p><p>3：查询并过滤MySQL数据</p><pre><code>    #行业信息    def query_industryfield_result(self):        info = {}        # 查询今日抓取到的行业信息数据        result = self.mysql_session.query(Lagoutables.industryField).filter(            Lagoutables.crawl_date==self.date        ).all()        result_list1 = [x[0].split(',')[0] for x in result]        result_list2 = [x for x in Counter(result_list1).items() if x[1]>25]        data = [{"name":x[0],"value":x[1]} for x in result_list2]        name_list = [name['name'] for name in data]        info['x_name'] = name_list        info['data'] = data        return info<pre><code># 查询薪资情况def query_salary_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.salary).filter(Lagoutables.crawl_date == self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items() if x[1]&gt;20]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 查询工作年限情况def query_workyear_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.workYear).filter(Lagoutables.crawl_date==self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items()]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2 if x[1]&gt;15]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 查询学历信息def query_education_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.education).filter(Lagoutables.crawl_date==self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items()]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 岗位发布数量,折线图def query_job_result(self):    info = {}    result = self.mysql_session.query(Lagoutables.crawl_date,func.count(&apos;*&apos;).label(&apos;c&apos;)).group_by(Lagoutables.crawl_date).all()    result1 = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result]    name_list = [name[&apos;name&apos;] for name in result1]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result1    return info# 根据城市计数def query_city_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.city,func.count(&apos;*&apos;).label(&apos;c&apos;)).filter(Lagoutables.crawl_date==self.date).group_by(Lagoutables.city).all()    result1 = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result]    name_list = [name[&apos;name&apos;] for name in result1]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result1    return info#融资情况def query_financestage_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.financeStage).filter(Lagoutables.crawl_date == self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items()]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 公司规模def query_companysize_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.companySize).filter(Lagoutables.crawl_date == self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items()]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 任职情况def query_jobNature_result(self):    info = {}    # 查询今日抓取到的薪资数据    result = self.mysql_session.query(Lagoutables.jobNature).filter(Lagoutables.crawl_date == self.date).all()    # 处理原始数据    result_list1 = [x[0] for x in result]    # 计数,并返回    result_list2 = [x for x in Counter(result_list1).items()]    result = [{&quot;name&quot;: x[0], &quot;value&quot;: x[1]} for x in result_list2]    name_list = [name[&apos;name&apos;] for name in result]    info[&apos;x_name&apos;] = name_list    info[&apos;data&apos;] = result    return info# 抓取数量def count_result(self):    info = {}    info[&apos;all_count&apos;] = self.mysql_session.query(Lagoutables).count()    info[&apos;today_count&apos;] = self.mysql_session.query(Lagoutables).filter(Lagoutables.crawl_date==self.date).count()    return info</code></pre><p></p></code></pre><p></p><p>三：数据可视化<br>使用echarts结合Flask进行可视化</p><pre><code>@app.route('/get_echart_data')def get_echart_data():    info = {}    # 行业发布数量分析    info['echart_1'] = lagou_mysql.query_industryfield_result()    # 薪资发布数量分析    info['echart_2'] = lagou_mysql.query_salary_result()    # 岗位数量分析,折线图    info['echart_4'] = lagou_mysql.query_job_result()    #工作年限分析    info['echart_5'] = lagou_mysql.query_workyear_result()    #学历情况分析    info['echart_6'] = lagou_mysql.query_education_result()    #融资情况    info['echart_31'] = lagou_mysql.query_financestage_result()    #公司规模    info['echart_32'] = lagou_mysql.query_companysize_result()    #岗位要求    info['echart_33'] = lagou_mysql.query_jobNature_result()    #各地区发布岗位数    info['map'] = lagou_mysql.query_city_result()    return jsonify(info)</code></pre><p>四：可视化效果<br><img src="//eliasliangyu.github.io/2020/06/15/python岗位信息数据可视化/%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B5%E9%9D%A2%E6%88%AA%E5%9B%BE.jpg" alt="可视化页面"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>404变200其实很简单</title>
@@ -54,29 +75,6 @@
     
     
       <category term="record" scheme="https://eliasliangyu.github.io/tags/record/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我为什么用花呗</title>
-    <link href="https://eliasliangyu.github.io/2019/09/28/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E8%8A%B1%E5%91%97/"/>
-    <id>https://eliasliangyu.github.io/2019/09/28/我为什么用花呗/</id>
-    <published>2019-09-28T14:33:14.000Z</published>
-    <updated>2019-10-21T02:18:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><b>首先声明，花呗对我来说并不是用来超支、超前消费的工具，我本人也绝不提倡此类行为。</b></p><p>身边不少同学、朋友对用花呗很抵触，而我是花呗的重度使用者（Ex嘲笑我是花呗男孩，手动滑稽）。</p><p>那么问题来了：我为什么会使用花呗呢？</p><p>作为一名普通大学生，一个月的生活费属于平均水平。每月支出主要分为两类：必需、非必需。很好理解，必需就是三餐、日用品等日常生存花销，非必需比如添置衣物、购入喜爱物件等精神花销。我个人对精神花销并不着迷，所以支出不多，每月这两类花销支出完还会有结余。</p><p>到这就会有人问：“你又不缺钱，用花呗干什么？”。</p><p>我的回答：<b>花呗不是用来欠钱的，是用来保留现有流动资产的。</b></p><p>我一直将生活费放在支付宝的余额宝中，每月会有少的可以忽略不计的利息（那也比银行利率高，手动滑稽），目前花呗额度被我锁在一定范围内，除去不能使用花呗付款的消费，其余全部使用花呗支付，这让我的生活费在月底之前并没减少多少，让我能在月初足够去清掉花呗，此外不仅得到微薄利息，<b>也让我能在应急时有可以直接使用且不需要任何约束的钱。这还不包括使用花呗后支付宝给你的积分，以及各种优惠红包。</b></p><p>这样说就很好理解我用花呗的原因了。<b>花呗让我每月的生活费得以一直留在手中任意支配，另外将花呗额度锁定与你的生活费一致，也能很有效的杜绝自己自制力不够的问题。</b></p><p>所有事物都有利弊，全看怎么加以利用了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="tittle-tattle" scheme="https://eliasliangyu.github.io/tags/tittle-tattle/"/>
     
   </entry>
   
@@ -284,29 +282,6 @@
     
     
       <category term="Course" scheme="https://eliasliangyu.github.io/tags/Course/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>纪念iPhone XR刷机成砖</title>
-    <link href="https://eliasliangyu.github.io/2019/06/14/%E7%BA%AA%E5%BF%B5iPhone-XR%E5%88%B7%E6%9C%BA%E6%88%90%E7%A0%96/"/>
-    <id>https://eliasliangyu.github.io/2019/06/14/纪念iPhone-XR刷机成砖/</id>
-    <published>2019-06-14T08:36:01.000Z</published>
-    <updated>2019-10-24T12:37:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本人于之前将iPhone XR刷成ios13尝鲜，刚上手体验并未发现明显BUG，只是系统的中英文显示有些混乱，例如提醒事项并未汉化。</p><p>未曾想，这几日频繁出现个别应用无法打开，闪退，十分影响体验，遂决定降级至12.4。</p><p>本人自诩刷机经验丰富，并未进行备份，然未曾想刷机失败......只得恢复出厂模式，十分蛋疼......</p><p>吃一堑长一智，今后折腾之前必先备份保平安，以此博文为记。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="Apple ios" scheme="https://eliasliangyu.github.io/tags/Apple-ios/"/>
     
   </entry>
   
